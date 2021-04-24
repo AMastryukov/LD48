@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a93457c234cb34c40a8222144d7339cc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - computertexta: {instanceID: 0}
+  - computertextb: {instanceID: 0}
+  - computertextc: {instanceID: 0}
+  - computerimagea: {instanceID: 0}
+  - computerimageb: {instanceID: 0}
+  - computerimagec: {instanceID: 0}
+  - orientation_up: {fileID: 21300000, guid: e592442dd656f3b47b232b1c0ae82be2, type: 3}
+  - orientation_down: {fileID: 21300000, guid: a34f8a5badb22f0408862f2b9727c873, type: 3}
+  - orientation_left: {fileID: 21300000, guid: 6847f1f4000bf934fb2845c2a777e85f, type: 3}
+  - orientation_right: {fileID: 21300000, guid: 49690bfaf00ece5409d0d7385c93bc53, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
