@@ -39,8 +39,6 @@ public class PauseMenu : MonoBehaviour
             DisablePauseUI();
             SetTimeScale(1f);
 
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
             playerCamera.enabled = true;
         }
         else
@@ -48,8 +46,6 @@ public class PauseMenu : MonoBehaviour
             EnablePauseUI();
             SetTimeScale(0.02f);
 
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
             playerCamera.enabled = false;
         }
 

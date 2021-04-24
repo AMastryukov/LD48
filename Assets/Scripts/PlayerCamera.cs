@@ -16,6 +16,15 @@ public class PlayerCamera : MonoBehaviour
     private void OnEnable()
     {
 		rotation = transform.rotation.eulerAngles;
+
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+	}
+
+    private void OnDisable()
+    {
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 
     private void Update()
