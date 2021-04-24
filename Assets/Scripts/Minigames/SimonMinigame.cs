@@ -8,9 +8,11 @@ public class SimonMinigame : BaseMinigame
 {
     public enum InputType { Lever, Button, Valve }
 
+    [SerializeField] private int sequenceLength = 5;
     [SerializeField] private List<GameObject> sequenceLights;
     [SerializeField] private TextMeshProUGUI feedbackText;
 
+    private bool acceptInput = false;
     private List<InputType> sequence = new List<InputType>();
     private int currentInputIndex = 0;
 
@@ -33,9 +35,8 @@ public class SimonMinigame : BaseMinigame
 
     private void SetupMinigame()
     {
-        isActive = false;
+        acceptInput = false;
 
-        int sequenceLength = 5;
         for (int i = 0; i < sequenceLength; i++)
         {
             sequence.Add((InputType)UnityEngine.Random.Range(0, Enum.GetNames(typeof(InputType)).Length));
@@ -61,7 +62,7 @@ public class SimonMinigame : BaseMinigame
         }
 
         UpdateFeedback();
-        isActive = true;
+        acceptInput = true;
     }
 
     private void UpdateFeedback()
@@ -71,7 +72,7 @@ public class SimonMinigame : BaseMinigame
 
     private void RegisterInput(InputType input)
     {
-        if (!isActive) return;
+        if (!acceptInput || !isActive) return;
 
         if (input == sequence[currentInputIndex])
         {
@@ -85,7 +86,7 @@ public class SimonMinigame : BaseMinigame
         }
         else
         {
-            isActive = false;
+            acceptInput = false;
             currentInputIndex = 0;
 
             feedbackText.text = "X";

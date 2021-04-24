@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 9ec2faa2a0803754f8e08c7fae30b6db, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.0034565933, g: 0.0047227507, b: 0.0034565933, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -160,8 +160,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 719, y: -478}
-  m_SizeDelta: {x: 1750, y: 1750}
+  m_AnchoredPosition: {x: 574.85, y: -286}
+  m_SizeDelta: {x: 970.2925, y: 970.2986}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &76833475
 MonoBehaviour:
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f52043181541e438ff7456a721ea5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: -0.1
+  rotationSpeed: -0.25
 --- !u!1 &418306871
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f52043181541e438ff7456a721ea5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: -0.2
+  rotationSpeed: -0.5
 --- !u!114 &703097917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f4e1177cde7fe4f95483433859bfe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFactor: 10
+  parallaxFactor: 1
 --- !u!114 &1624973238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1101,7 +1101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f4e1177cde7fe4f95483433859bfe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFactor: 20
+  parallaxFactor: 2
 --- !u!114 &1736817195
 MonoBehaviour:
   m_ObjectHideFlags: 0
