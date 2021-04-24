@@ -6,10 +6,12 @@ public class PlayerCamera : MonoBehaviour
 	[SerializeField] private float maxDownAngle = 25f;
 
 	private float speed = 1f;
-	private Vector2 rotation = Vector2.zero;
+	private Vector2 rotation;
+	private Quaternion startingRotation;
 
     private void Start()
     {
+		rotation = transform.rotation.eulerAngles;
 		speed = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
     }
 
