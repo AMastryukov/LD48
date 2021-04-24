@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
@@ -7,6 +8,7 @@ public class PlayerCamera : MonoBehaviour
 
 	private float speed = 1f;
 	private Vector2 rotation;
+	private bool cameraShaking = false;
 
     private void Start()
     {
@@ -31,7 +33,44 @@ public class PlayerCamera : MonoBehaviour
 	{
 		PollCameraInput();
 		PollInteractionInput();
+
+		if (Input.GetKeyDown(KeyCode.Z))
+        {
+			ShakeCamera();
+        }
 	}
+
+	public void ShakeCamera(float duration = 1f, float magnitude = 0.025f)
+    {
+		if (cameraShaking) return;
+
+		StartCoroutine(CameraShake(duration, magnitude));
+	}
+
+	private IEnumerator CameraShake(float duration, float magnitude)
+    {
+		cameraShaking = true;
+
+		Vector3 originalPosition = transform.position;
+		float timeElapsed = 0f;
+
+		while (timeElapsed < duration)
+        {
+			float x = Random.Range(-1f, 1f) * magnitude;
+			float y = Random.Range(-1f, 1f) * magnitude;
+			float z = Random.Range(-1f, 1f) * magnitude;
+
+			transform.localPosition = new Vector3(originalPosition.x + x, originalPosition.y + y, originalPosition.z + z);
+
+			timeElapsed += Time.deltaTime;
+
+			yield return null;
+        }
+
+		transform.localPosition = originalPosition;
+
+		cameraShaking = false;
+    }
 
 	private void PollCameraInput()
     {
