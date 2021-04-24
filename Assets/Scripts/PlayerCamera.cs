@@ -7,13 +7,16 @@ public class PlayerCamera : MonoBehaviour
 
 	private float speed = 1f;
 	private Vector2 rotation;
-	private Quaternion startingRotation;
 
     private void Start()
     {
-		rotation = transform.rotation.eulerAngles;
 		speed = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
     }
+
+    private void OnEnable()
+    {
+		rotation = transform.rotation.eulerAngles;
+	}
 
     private void Update()
 	{
