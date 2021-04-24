@@ -1,10 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    private PlayerCamera playerCamera;
+    private Canvas canvas;
+
     private bool isPaused = false;
+
+    private void Awake()
+    {
+        playerCamera = FindObjectOfType<PlayerCamera>();
+        canvas = GetComponent<Canvas>();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
+    }
 
     private void Update()
     {
@@ -23,18 +36,41 @@ public class PauseMenu : MonoBehaviour
     {
         if (isPaused)
         {
-            Debug.Log("Game Unpaused");
-            Time.timeScale = 1f;
-            Time.fixedDeltaTime = Time.timeScale * 1f;
+            DisablePauseUI();
+            SetTimeScale(1f);
+
+            playerCamera.enabled = true;
         }
         else
         {
-            Debug.Log("Game Paused");
-            Time.timeScale = 0.01f;
-            Time.fixedDeltaTime = Time.timeScale * 0.01f;
+            EnablePauseUI();
+            SetTimeScale(0.02f);
+
+            playerCamera.enabled = false;
         }
 
-
         isPaused = !isPaused;
+    }
+
+    public void GoToMainMenu()
+    {
+        SetTimeScale(1f);
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    private void EnablePauseUI()
+    {
+        canvas.enabled = true;
+    }
+
+    private void DisablePauseUI()
+    {
+        canvas.enabled = false;
+    }
+
+    private void SetTimeScale(float timeScale)
+    {
+        Time.timeScale = timeScale;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 }
