@@ -10,7 +10,6 @@ public class CodeMinigame : BaseMinigame
     [SerializeField] private TMPro.TextMeshProUGUI keypad_display;
     [SerializeField] private TMPro.TextMeshProUGUI code_display;
     [SerializeField] private TMPro.TextMeshProUGUI mapping_display;
-    [SerializeField] private GameObject keypad;
 
     Dictionary<string, string> key_mapping;
     int mapping_size = 9;
@@ -23,6 +22,12 @@ public class CodeMinigame : BaseMinigame
         base.StartMinigame();
         GenerateSequence(5);
         code_display.text = encoding;
+    }
+
+    public override void FinishMinigame()
+    {
+        base.FinishMinigame();
+        code_display.text = "";
     }
 
     // Start is called before the first frame update
@@ -40,6 +45,11 @@ public class CodeMinigame : BaseMinigame
         
     }
 
+    /*
+     * This method generates a key mapping. A good idea to only call this 
+     * once per game, unless you really want to confuse the player.
+     * Also updates the UI mapping in the game
+     */
     public void GenerateKeyMapping()
     {
         key_mapping = new Dictionary<string, string>();
@@ -51,10 +61,13 @@ public class CodeMinigame : BaseMinigame
             key_mapping.Add((i + 1).ToString(), characters[c].ToString());
             characters.RemoveAt(c);
         }
-        UpdateKeyMapping();
+        UpdateKeyMappingDisplay();
     }
 
-    public void UpdateKeyMapping()
+    /*
+     * Just updating the UI
+     */
+    public void UpdateKeyMappingDisplay()
     {
         string update_text = "";
         for (int i = 1; i < mapping_size + 1; i++)
@@ -64,6 +77,11 @@ public class CodeMinigame : BaseMinigame
         mapping_display.text = update_text;
     }
 
+    /*
+     * Generate a sequence on len digits. Encoding is also generated using the key mapping.
+     * Encoding is the sequence that is shown to the player, which he/she has to decode using
+     * the mapping UI.
+     */
     public void GenerateSequence(int len)
     {
         sequence = "";
@@ -77,6 +95,11 @@ public class CodeMinigame : BaseMinigame
 
     }
 
+    /*
+     * Refister Key press by the player. Update current_sequence and compare to the
+     * target sequence if needed.
+     * Also end game if sequence is correct.
+     */
     public void EnterKey(string s)
     {
         
@@ -90,6 +113,7 @@ public class CodeMinigame : BaseMinigame
             {
                 keypad_display.text = "Correct";
                 current_sequence = "";
+                FinishMinigame();
             }
             else
             {
