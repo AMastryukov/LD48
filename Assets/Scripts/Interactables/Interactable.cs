@@ -13,11 +13,8 @@ public class Interactable : MonoBehaviour
     {
         if (currentCooldown > 0f)
         {
-            Debug.Log("COOLDOWN: " + currentCooldown);
             return;
         }
-
-        Debug.Log("INTERACTED!");
 
         OnInteracted?.Invoke();
 

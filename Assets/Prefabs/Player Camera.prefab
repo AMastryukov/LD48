@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4923672121262022077}
   - component: {fileID: 4923672121262022064}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Player Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,4 +97,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxUpAngle: 35
-  maxDownAngle: 25
+  maxDownAngle: 35

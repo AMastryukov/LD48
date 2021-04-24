@@ -14,6 +14,9 @@ public class PauseMenu : MonoBehaviour
     {
         playerCamera = FindObjectOfType<PlayerCamera>();
         canvas = GetComponent<Canvas>();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
     }
 
     private void Update()
@@ -34,26 +37,28 @@ public class PauseMenu : MonoBehaviour
         if (isPaused)
         {
             DisablePauseUI();
-            playerCamera.enabled = true;
+            SetTimeScale(1f);
 
-            Time.timeScale = 1f;
-            Time.fixedDeltaTime = Time.timeScale * 1f;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            playerCamera.enabled = true;
         }
         else
         {
             EnablePauseUI();
+            SetTimeScale(0.02f);
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             playerCamera.enabled = false;
-
-            Time.timeScale = 0.01f;
-            Time.fixedDeltaTime = Time.timeScale * 0.01f;
         }
-
 
         isPaused = !isPaused;
     }
 
     public void GoToMainMenu()
     {
+        SetTimeScale(1f);
         SceneManager.LoadScene("Main Menu");
     }
 
@@ -65,5 +70,11 @@ public class PauseMenu : MonoBehaviour
     private void DisablePauseUI()
     {
         canvas.enabled = false;
+    }
+
+    private void SetTimeScale(float timeScale)
+    {
+        Time.timeScale = timeScale;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
     }
 }
