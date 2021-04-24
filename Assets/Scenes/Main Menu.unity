@@ -1011,7 +1011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f4e1177cde7fe4f95483433859bfe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFactor: 5
+  parallaxFactor: 10
 --- !u!114 &1624973238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f4e1177cde7fe4f95483433859bfe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxFactor: 12
+  parallaxFactor: 20
 --- !u!114 &1736817195
 MonoBehaviour:
   m_ObjectHideFlags: 0
