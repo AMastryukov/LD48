@@ -8,6 +8,7 @@ public class SimonMinigame : BaseMinigame
 {
     public enum InputType { Lever, Button, Valve }
 
+    [SerializeField] private List<GameObject> sequenceLights;
     [SerializeField] private TextMeshProUGUI feedbackText;
 
     private List<InputType> sequence = new List<InputType>();
@@ -32,18 +33,35 @@ public class SimonMinigame : BaseMinigame
 
     private void SetupMinigame()
     {
+        isActive = false;
+
         int sequenceLength = 5;
         for (int i = 0; i < sequenceLength; i++)
         {
             sequence.Add((InputType)UnityEngine.Random.Range(0, Enum.GetNames(typeof(InputType)).Length));
         }
 
-        foreach(InputType type in sequence)
+        StartCoroutine(DisplaySequence());
+    }
+
+    private IEnumerator DisplaySequence()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        // Flash the little things in sequence to show the player what the order is
+        for(int i = 0; i < sequence.Count; i++)
         {
-            Debug.Log(type.ToString());
+            feedbackText.text = (i + 1).ToString();
+
+            sequenceLights[(int)sequence[i]].gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.65f);
+            sequenceLights[(int)sequence[i]].gameObject.SetActive(false);
+
+            yield return new WaitForSeconds(0.15f);
         }
 
         UpdateFeedback();
+        isActive = true;
     }
 
     private void UpdateFeedback()
@@ -57,8 +75,6 @@ public class SimonMinigame : BaseMinigame
 
         if (input == sequence[currentInputIndex])
         {
-            Debug.Log("GOOD JOB!");
-
             if (currentInputIndex == sequence.Count - 1)
             {
                 FinishMinigame();
@@ -69,9 +85,14 @@ public class SimonMinigame : BaseMinigame
         }
         else
         {
-            Debug.Log("You suck lol");
-
+            isActive = false;
             currentInputIndex = 0;
+
+            feedbackText.text = "X";
+
+            StartCoroutine(DisplaySequence());
+
+            return;
         }
 
         UpdateFeedback();
