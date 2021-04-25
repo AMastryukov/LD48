@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
 
     private float currentCooldown = 0f;
 
-    public virtual void Interact(MonoBehaviour interactor = null)
+    public virtual void Interact()
     {
         if (currentCooldown > 0f)
         {
@@ -19,6 +19,16 @@ public class Interactable : MonoBehaviour
         OnInteracted?.Invoke();
 
         currentCooldown = cooldown;
+    }
+
+    public virtual void Interact(MonoBehaviour interactor)
+    {
+        Interact();
+    }
+
+    public virtual void Interact(MonoBehaviour interactor, RaycastHit hit)
+    {
+        Interact();
     }
 
     private void Update()

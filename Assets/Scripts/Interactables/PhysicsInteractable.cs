@@ -21,12 +21,12 @@ public class PhysicsInteractable : Interactable
         }
     }
 
-    public override void Interact(MonoBehaviour interactor = null)
+    public override void Interact(MonoBehaviour interactor, RaycastHit hit)
     {
         Vector3 forceVector = transform.position - interactor.transform.position;
-        ApplyForce(forceVector, 2f); 
+        rigidbody.AddForceAtPosition(forceVector, hit.point, ForceMode.Impulse);
 
-        base.Interact(interactor);
+        base.Interact();
     }
 
     public void ApplyForce(Vector3 force, float magnitude)
