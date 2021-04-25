@@ -45,13 +45,9 @@ public class GameManager : MonoBehaviour
     {
         //yield return IntroSequence();
         //yield return FirstSequence();
-        yield return SecondSequence();
+        //yield return SecondSequence();
         yield return ThirdSequence();
-
-        if (true)
-        {
-            yield return GameWinSequence();
-        }
+        yield return GameWinSequence();
     }
 
     private IEnumerator IntroSequence()
@@ -229,9 +225,9 @@ public class GameManager : MonoBehaviour
         #region Code Minigame
         EnableLights();
 
-        Debug.Log("Code minigame time.");
+        Debug.Log("Code minigame time!");
 
-        oxygenMinigame.StartMinigame();
+        codeMinigame.StartMinigame();
 
         minigameFinished = false;
 
@@ -240,16 +236,16 @@ public class GameManager : MonoBehaviour
             minigameFinished = true;
         };
 
-        OxygenMinigame.OnMinigameFinished += finishMinigameEvent;
+        CodeMinigame.OnMinigameFinished += finishMinigameEvent;
 
         while (!minigameFinished)
         {
             yield return null;
         }
 
-        OxygenMinigame.OnMinigameFinished -= finishMinigameEvent;
+        CodeMinigame.OnMinigameFinished -= finishMinigameEvent;
 
-        Debug.Log("Oxygen is back up.");
+        Debug.Log("Code minigame complete!");
 
         yield return new WaitForSeconds(2f);
         #endregion
@@ -257,7 +253,7 @@ public class GameManager : MonoBehaviour
         #region Oxygen Minigame
         EnableLights();
 
-        Debug.Log("Do the Oxygen Minigame. Check the front panel for information and spin the valves to match the orientations.");
+        Debug.Log("Oxygen Minigame again.");
 
         oxygenMinigame.StartMinigame();
 
@@ -305,13 +301,13 @@ public class GameManager : MonoBehaviour
 
         SimonMinigame.OnMinigameFinished -= finishMinigameEvent;
 
-        Debug.Log("Everything seems to be fine.");
+        Debug.Log("Time to get back to the surface.");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         #endregion
 
         #region Third Blackout
-        Debug.Log("What is that? Did you see it? Some formation... or... something outside the vessel!");
+        Debug.Log("You're- you're breaking up! I can- I can't hear you! *radio silence*");
 
         // Turn off lights, shake screen, disable gravity
         playerCamera.ShakeCamera(5, 0.02f);
@@ -332,16 +328,21 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameWinSequence()
     {
-        
+        Debug.Log("Loud crash");
 
-        yield return null;
-    }
+        yield return new WaitForSeconds(5f);
 
-    private IEnumerator GameFailSequence()
-    {
-        // Restart scene
+        Debug.Log("You only see the light in the front of the vessel. Interior lights are out.");
 
-        yield return null;
+        yield return new WaitForSeconds(10f);
+
+        Debug.Log("You see a figure creeping out from the fog. It approaches your vessel...");
+
+        yield return new WaitForSeconds(5f);
+
+        playerCamera.FadeCamera(1f, 0f);
+
+        Debug.Log("Roll credits");
     }
 
     private void EnableLights()

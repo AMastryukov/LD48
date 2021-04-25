@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CodeMinigame : BaseMinigame
 {
-    
+
     [SerializeField] private TMPro.TextMeshProUGUI keypad_display;
     [SerializeField] private TMPro.TextMeshProUGUI code_display;
     [SerializeField] private TMPro.TextMeshProUGUI mapping_display;
@@ -38,7 +38,6 @@ public class CodeMinigame : BaseMinigame
 
         keypad_display.text = "";
         code_display.text = "";
-        mapping_display.text = "";
     }
 
     /*
@@ -68,7 +67,7 @@ public class CodeMinigame : BaseMinigame
         string update_text = "";
         for (int i = 1; i < mapping_size + 1; i++)
         {
-            update_text += i.ToString() + ":" + key_mapping[i.ToString()] + " ";
+            update_text += i.ToString() + "=" + key_mapping[i.ToString()] + " ";
 
             if (i % 3 == 0) { update_text += "\n"; }
         }
@@ -86,7 +85,7 @@ public class CodeMinigame : BaseMinigame
         encoding = "";
         for (int i = 0; i < len; i++)
         {
-            int num = Random.Range(1, mapping_size+1);
+            int num = Random.Range(1, mapping_size + 1);
             sequence += num.ToString();
             encoding += key_mapping[num.ToString()];
         }
@@ -111,15 +110,13 @@ public class CodeMinigame : BaseMinigame
                 keypad_display.text = "Correct";
                 current_sequence = "";
 
-                Debug.Log("[CODE MINIGAME] Win");
-
                 FinishMinigame();
             }
             else
             {
                 keypad_display.text = "Incorrect";
                 current_sequence = "";
-            } 
+            }
         }
     }
 }
