@@ -30,11 +30,6 @@ public class OxygenMinigame : BaseMinigame
         }
     }
 
-    private void Start()
-    {
-        StartMinigame();
-    }
-
     public override void StartMinigame()
     {
         ResetMinigame();

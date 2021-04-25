@@ -26,8 +26,9 @@ public class SimonMinigame : BaseMinigame
         }
     }
 
-    private void Start()
+    public void StartMinigame(int difficulty)
     {
+        sequenceLength = difficulty;
         StartMinigame();
     }
 

@@ -35,6 +35,10 @@ public class CodeMinigame : BaseMinigame
     void Start()
     {
         GenerateKeyMapping();
+
+        keypad_display.text = "";
+        code_display.text = "";
+        mapping_display.text = "";
     }
 
     /*

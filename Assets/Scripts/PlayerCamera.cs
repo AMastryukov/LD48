@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
+	public bool IsLocked { get; set; } = false;
+
 	[SerializeField] private CanvasGroup darkOverlay;
 	[SerializeField] private float maxUpAngle = 45f;
 	[SerializeField] private float maxDownAngle = 25f;
@@ -33,13 +35,10 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
 	{
+		if (IsLocked) return;
+
 		PollCameraInput();
 		PollInteractionInput();
-
-		if (Input.GetKeyDown(KeyCode.J))
-        {
-			FadeCamera(0f, 3f);
-        }
 	}
 
 	public void ShakeCamera(float duration = 1f, float magnitude = 0.025f)
