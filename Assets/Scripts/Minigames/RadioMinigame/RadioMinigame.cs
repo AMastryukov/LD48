@@ -19,7 +19,7 @@ public class RadioMinigame : BaseMinigame
     private int y_speed_target = 0;
     private int x_speed_target = 0;
     private int amp_target = 0;
-    private int freq_target = 0;
+    private int freq_target = 2;
 
     private float[] y_speed_presets = { 0, 0.5f, 1, 1.5f };
     private float[] x_speed_presets = { 0.5f, 1, 1.5f, 0};

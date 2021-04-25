@@ -8,21 +8,8 @@ public class RadioKnob : Interactable
     [SerializeField] private RadioMinigame minigame;
     [SerializeField] private ToggleOption option;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public override void Interact()
     {
-        print("Rotate");
         if (is_rotating)
         {
             return;
