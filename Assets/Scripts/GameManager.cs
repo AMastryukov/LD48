@@ -35,31 +35,62 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator IntroSequence()
     {
+        // Play voice lines
+
+        // Turn off lights, shake screen, disable gravity
+
         yield return null;
     }
 
     private IEnumerator FirstSequence()
     {
+        // Trigger Simon Minigame
+
         yield return null;
     }
 
     private IEnumerator SecondSequence()
     {
+        // Trigger Oxygen Minigame
+
+
+        // Trigger Simon Minigame
+
+
+        // Turn off lights, shake screen, disable gravity
+
+
         yield return null;
     }
 
     private IEnumerator ThirdSequence()
     {
+        // Trigger Oxygen Minigame
+
+
+        // Trigger Code Minigame
+
+
+        // Trigger Simon Minigame
+
+
+        // Turn off lights, shake screen, disable gravity
+
+
         yield return null;
     }
 
     private IEnumerator GameWinSequence()
     {
+        
+
         yield return null;
     }
 
     private IEnumerator GameFailSequence()
     {
+        // Restart scene
+
         yield return null;
     }
 }
