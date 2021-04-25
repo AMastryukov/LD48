@@ -7,47 +7,66 @@ using TMPro;
 
 public class OxygenMinigame : BaseMinigame
 {
+    [SerializeField] private Canvas computerCanvas;
     [SerializeField] private OxygenValve[] valves;
-    [SerializeField] private TextMeshProUGUI[] displayTexts;
     [SerializeField] private Image[] displayImages;
     [SerializeField] private Sprite[] directionSprites;
 
     private OxygenValve.Orientation[] desiredOrientations;
     private List<int> randomOrder = new List<int> { 0, 1, 2 };
+    private Color[] colors = { Color.red, Color.green, Color.blue };
+
+    private void Awake()
+    {
+        computerCanvas.enabled = false;
+        
+        // Color the valves
+        for (int i = 0; i < valves.Length; i++)
+        {
+            foreach(MeshRenderer mesh in valves[i].GetComponentsInChildren<MeshRenderer>())
+            {
+                mesh.material.color = colors[i];
+            }
+        }
+    }
+
+    private void Start()
+    {
+        StartMinigame();
+    }
 
     public override void StartMinigame()
     {
-        SetupMinigame();
+        ResetMinigame();
         base.StartMinigame();
     }
 
-    private void OnEnable()
+    public override void FinishMinigame()
     {
-        OxygenValve.OnValveRotated += CheckRotations;
+        computerCanvas.enabled = false;
+        base.FinishMinigame();
     }
 
-    private void OnDisable()
+    public void CheckSolution()
     {
-        OxygenValve.OnValveRotated -= CheckRotations;
-    }
+        if (!isActive) { return; }
 
-    private void CheckRotations()
-    {
         for (int i = 0; i < valves.Length; i++)
         {
             if (valves[i].currentOrientation != desiredOrientations[i])
             {
+                ResetMinigame();
                 return;
             }
         }
 
-        Debug.Log("[OXYGEN GAME] Win");
-
         FinishMinigame();
     }
 
-    private void SetupMinigame()
+    private void ResetMinigame()
     {
+        computerCanvas.enabled = true;
+
         desiredOrientations = new OxygenValve.Orientation[valves.Length];
 
         // Generate random orientations for each valve
@@ -66,8 +85,8 @@ public class OxygenMinigame : BaseMinigame
         {
             int randomIndex = randomOrder[i];
 
-            displayImages[randomIndex].sprite = directionSprites[(int)desiredOrientations[i]];
-            displayTexts[i].text = (randomOrder[randomIndex] + 1).ToString();
+            displayImages[i].sprite = directionSprites[(int)desiredOrientations[randomIndex]];
+            displayImages[i].color = colors[randomIndex];
         }
     }
 }

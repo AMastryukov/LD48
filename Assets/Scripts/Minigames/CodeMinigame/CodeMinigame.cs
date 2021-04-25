@@ -96,13 +96,12 @@ public class CodeMinigame : BaseMinigame
      */
     public void EnterKey(string s)
     {
-        
+        if (!isActive) return;
+
         current_sequence += s;
         keypad_display.text = current_sequence;
         if (current_sequence.Length >= sequence.Length)
         {
-            print(current_sequence);
-            print(sequence);
             if (current_sequence == sequence)
             {
                 keypad_display.text = "Correct";
