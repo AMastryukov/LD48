@@ -74,7 +74,7 @@ public class CodeMinigame : BaseMinigame
         {
             update_text += i.ToString() + ":" + key_mapping[i.ToString()] + " ";
 
-            if (i % 2 == 0) { update_text += "\n"; }
+            if (i % 3 == 0) { update_text += "\n"; }
         }
         mapping_display.text = update_text;
     }

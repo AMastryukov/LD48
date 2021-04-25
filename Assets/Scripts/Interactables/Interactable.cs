@@ -4,12 +4,12 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-    [SerializeField] private float cooldown = 0f;
+    [SerializeField] private float cooldown = 1f;
     public InteractableEvent OnInteracted;
 
     private float currentCooldown = 0f;
 
-    public void Interact()
+    public virtual void Interact(MonoBehaviour interactor = null)
     {
         if (currentCooldown > 0f)
         {
