@@ -241,8 +241,9 @@ GameObject:
   - component: {fileID: 705918209631193282}
   - component: {fileID: 705918209631193281}
   - component: {fileID: 705918209631193280}
+  - component: {fileID: 4461884093494847166}
   m_Layer: 5
-  m_Name: ComputerPanel
+  m_Name: OxygenCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,7 +256,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705918209631193295}
-  m_LocalRotation: {x: 0.30809823, y: 0.6288383, z: -0.3044334, w: 0.64572304}
+  m_LocalRotation: {x: 0.3080977, y: 0.62883794, z: -0.3044314, w: 0.64572453}
   m_LocalPosition: {x: 0, y: 0, z: -0.027}
   m_LocalScale: {x: 0.0007787141, y: 0.0007787141, z: 0.0007787141}
   m_Children:
@@ -334,6 +335,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4461884093494847166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705918209631193295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a93457c234cb34c40a8222144d7339cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
+  valves: []
+  displayTexts: []
+  displayImages: []
+  directionSprites: []
 --- !u!1 &705918209829909481
 GameObject:
   m_ObjectHideFlags: 0
