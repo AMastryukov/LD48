@@ -79,11 +79,11 @@ public class PlayerCamera : MonoBehaviour
 
 	private void PollInteractionInput()
     {
-		RaycastHit hit;
-
-		if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+		if (Input.GetKeyDown(KeyCode.E))
 		{
-			if (Input.GetKeyDown(KeyCode.E))
+			RaycastHit hit;
+
+			if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
 			{
 				if (hit.collider.GetComponent<Interactable>() != null)
                 {
@@ -91,5 +91,5 @@ public class PlayerCamera : MonoBehaviour
                 }
 			}
 		}
-    }
+	}
 }
