@@ -10,13 +10,19 @@ public class OxygenValve : MonoBehaviour
 
     public static Action OnValveRotated;
 
+    private bool isRotating = false;
+
     public void Rotate()
     {
+        if (isRotating) { return; }
+
         StartCoroutine(RotateValve());
     }
 
     private IEnumerator RotateValve()
     {
+        isRotating = true;
+
         Quaternion from = transform.rotation;
         Quaternion to = transform.rotation * Quaternion.Euler(Vector3.up * -90f);
 
@@ -41,6 +47,7 @@ public class OxygenValve : MonoBehaviour
         }
 
         transform.rotation = to;
+        isRotating = false;
 
         OnValveRotated?.Invoke();
     }

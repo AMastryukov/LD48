@@ -20,7 +20,7 @@ public class CodeMinigame : BaseMinigame
     public override void StartMinigame()
     {
         base.StartMinigame();
-        GenerateSequence(5);
+        GenerateSequence(6);
         code_display.text = encoding;
     }
 
@@ -34,7 +34,7 @@ public class CodeMinigame : BaseMinigame
     void Start()
     {
         GenerateKeyMapping();
-        GenerateSequence(5);
+        GenerateSequence(6);
         code_display.text = encoding;
         keypad_display.text = "";
     }
@@ -72,7 +72,9 @@ public class CodeMinigame : BaseMinigame
         string update_text = "";
         for (int i = 1; i < mapping_size + 1; i++)
         {
-            update_text += i.ToString() + " -> " + key_mapping[i.ToString()] + "\n";
+            update_text += i.ToString() + ":" + key_mapping[i.ToString()] + " ";
+
+            if (i % 2 == 0) { update_text += "\n"; }
         }
         mapping_display.text = update_text;
     }

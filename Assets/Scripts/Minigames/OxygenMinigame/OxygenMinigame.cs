@@ -53,7 +53,10 @@ public class OxygenMinigame : BaseMinigame
         // Generate random orientations for each valve
         for (int i = 0; i < desiredOrientations.Length; i++)
         {
-            desiredOrientations[i] = (OxygenValve.Orientation) UnityEngine.Random.Range(0, Enum.GetNames(typeof(OxygenValve.Orientation)).Length);
+            while (desiredOrientations[i] == valves[i].currentOrientation)
+            {
+                desiredOrientations[i] = (OxygenValve.Orientation)UnityEngine.Random.Range(0, Enum.GetNames(typeof(OxygenValve.Orientation)).Length);
+            }
         }
 
         // Randomize the valve placements to add abstraction
@@ -64,7 +67,7 @@ public class OxygenMinigame : BaseMinigame
             int randomIndex = randomOrder[i];
 
             displayImages[randomIndex].sprite = directionSprites[(int)desiredOrientations[i]];
-            displayTexts[i].text = randomOrder[randomIndex].ToString();
+            displayTexts[i].text = (randomOrder[randomIndex] + 1).ToString();
         }
     }
 
