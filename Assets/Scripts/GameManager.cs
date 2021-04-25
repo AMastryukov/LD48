@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private WorldManager worldManager;
     private GravityManager gravityManager;
     private AudioManager audioManager;
     private PlayerCamera playerCamera;
 
     private void Awake()
     {
+        worldManager = FindObjectOfType<WorldManager>();
         gravityManager = FindObjectOfType<GravityManager>();
         audioManager = FindObjectOfType<AudioManager>();
         playerCamera = FindObjectOfType<PlayerCamera>();
@@ -35,7 +37,14 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator IntroSequence()
     {
-        // Play voice lines
+        playerCamera.enabled = false;
+        playerCamera.FadeCamera(1f, 0f);
+
+        // Play voice lines and wait for them
+        yield return new WaitForSeconds(5f);
+
+        playerCamera.FadeCamera(0f, 5f);
+        playerCamera.enabled = true;
 
         // Turn off lights, shake screen, disable gravity
 
