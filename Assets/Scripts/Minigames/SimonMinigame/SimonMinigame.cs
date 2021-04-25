@@ -6,18 +6,29 @@ using TMPro;
 
 public class SimonMinigame : BaseMinigame
 {
-    public enum InputType { Lever, Button, Valve }
-
     [SerializeField] private int sequenceLength = 5;
     [SerializeField] private List<GameObject> sequenceLights;
     [SerializeField] private TextMeshProUGUI feedbackText;
+    [SerializeField] private Transform[] doors;
 
     private bool acceptInput = false;
-    private List<InputType> sequence = new List<InputType>();
+    private List<int> sequenceIDs = new List<int>();
     private int currentInputIndex = 0;
+    private Color[] lightColors = { Color.green, Color.yellow, Color.red };
 
-    private void Start()
+    private void Awake()
     {
+        for (int i = 0; i < sequenceLights.Count; i++)
+        {
+            sequenceLights[i].GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", lightColors[i]);
+            sequenceLights[i].GetComponent<Light>().color = lightColors[i];
+            sequenceLights[i].SetActive(false);
+        }
+    }
+
+    public void StartMinigame(int difficulty)
+    {
+        sequenceLength = difficulty;
         StartMinigame();
     }
 
@@ -30,6 +41,10 @@ public class SimonMinigame : BaseMinigame
     public override void FinishMinigame()
     {
         feedbackText.text = "EZ";
+        Debug.Log("[SIMON MINIGAME] Win");
+
+        StartCoroutine(CloseDoorsCoroutine());
+
         base.FinishMinigame();
     }
 
@@ -39,24 +54,25 @@ public class SimonMinigame : BaseMinigame
 
         for (int i = 0; i < sequenceLength; i++)
         {
-            sequence.Add((InputType)UnityEngine.Random.Range(0, Enum.GetNames(typeof(InputType)).Length));
+            sequenceIDs.Add(UnityEngine.Random.Range(0, 3));
         }
 
+        StartCoroutine(OpenDoorsCoroutine());
         StartCoroutine(DisplaySequence());
     }
 
     private IEnumerator DisplaySequence()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         // Flash the little things in sequence to show the player what the order is
-        for(int i = 0; i < sequence.Count; i++)
+        for(int i = 0; i < sequenceIDs.Count; i++)
         {
             feedbackText.text = (i + 1).ToString();
 
-            sequenceLights[(int)sequence[i]].gameObject.SetActive(true);
+            sequenceLights[(int)sequenceIDs[i]].gameObject.SetActive(true);
             yield return new WaitForSeconds(0.65f);
-            sequenceLights[(int)sequence[i]].gameObject.SetActive(false);
+            sequenceLights[(int)sequenceIDs[i]].gameObject.SetActive(false);
 
             yield return new WaitForSeconds(0.15f);
         }
@@ -67,16 +83,16 @@ public class SimonMinigame : BaseMinigame
 
     private void UpdateFeedback()
     {
-        feedbackText.text = (sequence.Count - currentInputIndex).ToString();
+        feedbackText.text = (sequenceIDs.Count - currentInputIndex).ToString();
     }
 
-    private void RegisterInput(InputType input)
+    public void RegisterInput(int inputID)
     {
         if (!acceptInput || !isActive) return;
 
-        if (input == sequence[currentInputIndex])
+        if (inputID == sequenceIDs[currentInputIndex])
         {
-            if (currentInputIndex == sequence.Count - 1)
+            if (currentInputIndex == sequenceIDs.Count - 1)
             {
                 FinishMinigame();
                 return;
@@ -99,18 +115,45 @@ public class SimonMinigame : BaseMinigame
         UpdateFeedback();
     }
 
-    public void PullLever()
+    private IEnumerator OpenDoorsCoroutine()
     {
-        RegisterInput(InputType.Lever);
+        Quaternion fromLeft = doors[0].transform.rotation;
+        Quaternion fromRight = doors[1].transform.rotation;
+        Quaternion toLeft = doors[0].transform.rotation * Quaternion.Euler(Vector3.forward * 130f);
+        Quaternion toRight = doors[1].transform.rotation * Quaternion.Euler(Vector3.forward * -130f);
+
+        float duration = 1f;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            doors[0].transform.rotation = Quaternion.Slerp(fromLeft, toLeft, timeElapsed / duration);
+            doors[1].transform.rotation = Quaternion.Slerp(fromRight, toRight, timeElapsed / duration);
+
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
     }
 
-    public void PushButton()
+    private IEnumerator CloseDoorsCoroutine()
     {
-        RegisterInput(InputType.Button);
-    }
+        Quaternion fromLeft = doors[0].transform.rotation;
+        Quaternion fromRight = doors[1].transform.rotation;
+        Quaternion toLeft = doors[0].transform.rotation * Quaternion.Euler(Vector3.forward * -130f);
+        Quaternion toRight = doors[1].transform.rotation * Quaternion.Euler(Vector3.forward * 130f);
 
-    public void UseValve()
-    {
-        RegisterInput(InputType.Valve);
+        float duration = 1f;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            doors[0].transform.rotation = Quaternion.Slerp(fromLeft, toLeft, timeElapsed / duration);
+            doors[1].transform.rotation = Quaternion.Slerp(fromRight, toRight, timeElapsed / duration);
+
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
     }
 }

@@ -8,8 +8,6 @@ public class OxygenValve : MonoBehaviour
     public enum Orientation { Up, Right, Down, Left }
     public Orientation currentOrientation = Orientation.Up;
 
-    public static Action OnValveRotated;
-
     private bool isRotating = false;
 
     public void Rotate()
@@ -48,7 +46,5 @@ public class OxygenValve : MonoBehaviour
 
         transform.rotation = to;
         isRotating = false;
-
-        OnValveRotated?.Invoke();
     }
 }
