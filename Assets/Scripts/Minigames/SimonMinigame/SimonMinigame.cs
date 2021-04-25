@@ -16,11 +16,6 @@ public class SimonMinigame : BaseMinigame
     private List<InputType> sequence = new List<InputType>();
     private int currentInputIndex = 0;
 
-    private void Start()
-    {
-        StartMinigame();
-    }
-
     public override void StartMinigame()
     {
         SetupMinigame();
@@ -30,6 +25,8 @@ public class SimonMinigame : BaseMinigame
     public override void FinishMinigame()
     {
         feedbackText.text = "EZ";
+        Debug.Log("[SIMON MINIGAME] Win");
+
         base.FinishMinigame();
     }
 

@@ -41,7 +41,7 @@ public class OxygenMinigame : BaseMinigame
             }
         }
 
-        Debug.Log("Game Win");
+        Debug.Log("[OXYGEN GAME] Win");
 
         FinishMinigame();
     }
@@ -69,10 +69,5 @@ public class OxygenMinigame : BaseMinigame
             displayImages[randomIndex].sprite = directionSprites[(int)desiredOrientations[i]];
             displayTexts[i].text = (randomOrder[randomIndex] + 1).ToString();
         }
-    }
-
-    void Start()
-    {
-        StartMinigame();
     }
 }

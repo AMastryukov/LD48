@@ -33,11 +33,6 @@ public class PlayerCamera : MonoBehaviour
 	{
 		PollCameraInput();
 		PollInteractionInput();
-
-		if (Input.GetKeyDown(KeyCode.Z))
-        {
-			ShakeCamera();
-        }
 	}
 
 	public void ShakeCamera(float duration = 1f, float magnitude = 0.025f)

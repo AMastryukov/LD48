@@ -15,21 +15,6 @@ public class GravityManager : MonoBehaviour
         defaultGravity = Physics.gravity;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            if (gravityEnabled)
-            {
-                DisableGravity();
-            }
-            else
-            {
-                EnableGravity();
-            }
-        }
-    }
-
     public void DisableGravity()
     {
         Physics.gravity = Vector3.zero;

@@ -21,7 +21,9 @@ public class CodeMinigame : BaseMinigame
     {
         base.StartMinigame();
         GenerateSequence(6);
+
         code_display.text = encoding;
+        keypad_display.text = "";
     }
 
     public override void FinishMinigame()
@@ -30,19 +32,9 @@ public class CodeMinigame : BaseMinigame
         code_display.text = "";
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         GenerateKeyMapping();
-        GenerateSequence(6);
-        code_display.text = encoding;
-        keypad_display.text = "";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     /*
@@ -115,6 +107,9 @@ public class CodeMinigame : BaseMinigame
             {
                 keypad_display.text = "Correct";
                 current_sequence = "";
+
+                Debug.Log("[CODE MINIGAME] Win");
+
                 FinishMinigame();
             }
             else
