@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameSequence()
     {
-        yield return IntroSequence();
-        yield return FirstSequence();
+        //yield return IntroSequence();
+        //yield return FirstSequence();
         yield return SecondSequence();
         yield return ThirdSequence();
 
@@ -148,24 +148,186 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator SecondSequence()
     {
-        yield return null;
+        #region Oxygen Minigame
+        EnableLights();
+
+        Debug.Log("Do the Oxygen Minigame. Check the front panel for information and spin the valves to match the orientations.");
+
+        oxygenMinigame.StartMinigame();
+
+        minigameFinished = false;
+
+        finishMinigameEvent = () =>
+        {
+            minigameFinished = true;
+        };
+
+        OxygenMinigame.OnMinigameFinished += finishMinigameEvent;
+
+        while (!minigameFinished)
+        {
+            yield return null;
+        }
+
+        OxygenMinigame.OnMinigameFinished -= finishMinigameEvent;
+
+        Debug.Log("Oxygen is back up.");
+
+        yield return new WaitForSeconds(2f);
+        #endregion
+
+        #region Simon Minigame
+        EnableLights();
+
+        Debug.Log("Simon Game again. You already know how this is done.");
+
+        simonMinigame.StartMinigame(8);
+
+        minigameFinished = false;
+
+        finishMinigameEvent = () =>
+        {
+            minigameFinished = true;
+        };
+
+        SimonMinigame.OnMinigameFinished += finishMinigameEvent;
+
+        while (!minigameFinished)
+        {
+            yield return null;
+        }
+
+        SimonMinigame.OnMinigameFinished -= finishMinigameEvent;
+
+        Debug.Log("Everything seems to be fine.");
+
+        yield return new WaitForSeconds(2f);
+        #endregion
+
+        #region Third Blackout
+        Debug.Log("What is that? Did you see it? Some formation... or... something outside the vessel!");
+
+        // Turn off lights, shake screen, disable gravity
+        playerCamera.ShakeCamera(5, 0.02f);
+        gravityManager.DisableGravity();
+
+        yield return new WaitForSeconds(5f);
+
+        gravityManager.EnableGravity();
+        playerCamera.ShakeCamera(1f, 0.1f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        DisableLights();
+
+        yield return new WaitForSeconds(3f);
+        #endregion
     }
 
     private IEnumerator ThirdSequence()
     {
-        // Trigger Oxygen Minigame
+        #region Code Minigame
+        EnableLights();
 
+        Debug.Log("Code minigame time.");
 
-        // Trigger Code Minigame
+        oxygenMinigame.StartMinigame();
 
+        minigameFinished = false;
 
-        // Trigger Simon Minigame
+        finishMinigameEvent = () =>
+        {
+            minigameFinished = true;
+        };
 
+        OxygenMinigame.OnMinigameFinished += finishMinigameEvent;
+
+        while (!minigameFinished)
+        {
+            yield return null;
+        }
+
+        OxygenMinigame.OnMinigameFinished -= finishMinigameEvent;
+
+        Debug.Log("Oxygen is back up.");
+
+        yield return new WaitForSeconds(2f);
+        #endregion
+
+        #region Oxygen Minigame
+        EnableLights();
+
+        Debug.Log("Do the Oxygen Minigame. Check the front panel for information and spin the valves to match the orientations.");
+
+        oxygenMinigame.StartMinigame();
+
+        minigameFinished = false;
+
+        finishMinigameEvent = () =>
+        {
+            minigameFinished = true;
+        };
+
+        OxygenMinigame.OnMinigameFinished += finishMinigameEvent;
+
+        while (!minigameFinished)
+        {
+            yield return null;
+        }
+
+        OxygenMinigame.OnMinigameFinished -= finishMinigameEvent;
+
+        Debug.Log("Oxygen is back up.");
+
+        yield return new WaitForSeconds(2f);
+        #endregion
+
+        #region Simon Minigame
+        EnableLights();
+
+        Debug.Log("Simon Game again. You already know how this is done.");
+
+        simonMinigame.StartMinigame();
+
+        minigameFinished = false;
+
+        finishMinigameEvent = () =>
+        {
+            minigameFinished = true;
+        };
+
+        SimonMinigame.OnMinigameFinished += finishMinigameEvent;
+
+        while (!minigameFinished)
+        {
+            yield return null;
+        }
+
+        SimonMinigame.OnMinigameFinished -= finishMinigameEvent;
+
+        Debug.Log("Everything seems to be fine.");
+
+        yield return new WaitForSeconds(2f);
+        #endregion
+
+        #region Third Blackout
+        Debug.Log("What is that? Did you see it? Some formation... or... something outside the vessel!");
 
         // Turn off lights, shake screen, disable gravity
+        playerCamera.ShakeCamera(5, 0.02f);
+        gravityManager.DisableGravity();
 
+        yield return new WaitForSeconds(5f);
 
-        yield return null;
+        gravityManager.EnableGravity();
+        playerCamera.ShakeCamera(1f, 0.1f);
+
+        yield return new WaitForSeconds(0.5f);
+
+        DisableLights();
+
+        yield return new WaitForSeconds(3f);
+        #endregion
     }
 
     private IEnumerator GameWinSequence()

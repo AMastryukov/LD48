@@ -6,16 +6,16 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PhysicsInteractable : Interactable
 {
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (rigidbody.velocity.magnitude > 1f)
+        if (rb.velocity.magnitude > 1f)
         {
             // TODO: play a bang sound
         }
@@ -24,14 +24,14 @@ public class PhysicsInteractable : Interactable
     public override void Interact(MonoBehaviour interactor, RaycastHit hit)
     {
         Vector3 forceVector = transform.position - interactor.transform.position;
-        rigidbody.AddForceAtPosition(forceVector, hit.point, ForceMode.Impulse);
+        rb.AddForceAtPosition(forceVector, hit.point, ForceMode.Impulse);
 
         base.Interact();
     }
 
     public void ApplyForce(Vector3 force, float magnitude)
     {
-        rigidbody.AddForce(force * magnitude, ForceMode.Impulse);
+        rb.AddForce(force * magnitude, ForceMode.Impulse);
     }
 
     public void ApplyTorque()
@@ -44,6 +44,6 @@ public class PhysicsInteractable : Interactable
             Random.Range(minTorque, maxTorque), 
             Random.Range(minTorque, maxTorque));
 
-        rigidbody.AddTorque(randomVector);
+        rb.AddTorque(randomVector);
     }
 }

@@ -6,11 +6,11 @@ using TMPro;
 
 public class SimonMinigame : BaseMinigame
 {
-    [SerializeField] private int sequenceLength = 5;
     [SerializeField] private List<GameObject> sequenceLights;
     [SerializeField] private TextMeshProUGUI feedbackText;
     [SerializeField] private Transform[] doors;
 
+    private int sequenceLength = 5;
     private bool acceptInput = false;
     private List<int> sequenceIDs = new List<int>();
     private int currentInputIndex = 0;
@@ -52,6 +52,7 @@ public class SimonMinigame : BaseMinigame
     {
         acceptInput = false;
 
+        sequenceIDs.Clear();
         for (int i = 0; i < sequenceLength; i++)
         {
             sequenceIDs.Add(UnityEngine.Random.Range(0, 3));
