@@ -14,7 +14,7 @@ public class OxygenMinigame : BaseMinigame
 
     private OxygenValve.Orientation[] desiredOrientations;
     private List<int> randomOrder = new List<int> { 0, 1, 2 };
-    private Color[] colors = { Color.red, Color.green, Color.blue };
+    private Color[] colors = { Color.red, Color.green, Color.yellow };
 
     private void Awake()
     {
