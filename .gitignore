@@ -60,3 +60,5 @@ crashlytics-build.properties
 
 # Resource files (raw files)
 Sources/
+UserSettings/EditorUserSettings.asset
+UserSettings/EditorUserSettings.asset
