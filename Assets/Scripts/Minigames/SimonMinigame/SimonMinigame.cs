@@ -21,9 +21,9 @@ public class SimonMinigame : BaseMinigame
     {
         for (int i = 0; i < sequenceLights.Count; i++)
         {
-            sequenceLights[i].GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", lightColors[i]);
+            sequenceLights[i].GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.black);
             sequenceLights[i].GetComponent<Light>().color = lightColors[i];
-            sequenceLights[i].SetActive(false);
+            sequenceLights[i].GetComponent<Light>().enabled = false;
         }
     }
 
@@ -71,9 +71,13 @@ public class SimonMinigame : BaseMinigame
         {
             feedbackText.text = (i + 1).ToString();
 
-            sequenceLights[(int)sequenceIDs[i]].gameObject.SetActive(true);
+            sequenceLights[sequenceIDs[i]].GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", lightColors[sequenceIDs[i]]);
+            sequenceLights[sequenceIDs[i]].GetComponent<Light>().enabled = true;
+
             yield return new WaitForSeconds(0.65f);
-            sequenceLights[(int)sequenceIDs[i]].gameObject.SetActive(false);
+
+            sequenceLights[sequenceIDs[i]].GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.black);
+            sequenceLights[sequenceIDs[i]].GetComponent<Light>().enabled = false;
 
             yield return new WaitForSeconds(0.15f);
         }
@@ -90,6 +94,8 @@ public class SimonMinigame : BaseMinigame
     public void RegisterInput(int inputID)
     {
         if (!acceptInput || !isActive) return;
+
+        if (inputID == 2) { leverAnimator.Play(0); }
 
         if (inputID == sequenceIDs[currentInputIndex])
         {

@@ -504,8 +504,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.20760901, y: 0.088313855, z: 0.21479}
-  m_Center: {x: 0.0016456865, y: 0.024227325, z: 0.011671021}
+  m_Size: {x: 0.20760901, y: 0.11125059, z: 0.16609022}
+  m_Center: {x: 0.0016456915, y: 0.0015748125, z: -0.01267886}
 --- !u!114 &6021509971711821106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,18 +532,6 @@ MonoBehaviour:
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 100604194058645599}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Base Layer.Pull
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5829941838995322127
@@ -659,7 +647,7 @@ Transform:
   m_GameObject: {fileID: 6209000060664942086}
   m_LocalRotation: {x: -0.004182829, y: -0.0041826856, z: -0.707097, w: 0.70709175}
   m_LocalPosition: {x: -0.011, y: -0.003, z: 0.147}
-  m_LocalScale: {x: 0.07155721, y: 0.071557224, z: 0.0715572}
+  m_LocalScale: {x: 1.2345519, y: 1.2345519, z: 1.2345519}
   m_Children: []
   m_Father: {fileID: 8599631030786145276}
   m_RootOrder: 1
@@ -671,7 +659,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6209000060664942086}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 3869936522087249631, guid: 81f380b25ca7b6c4d9835f8ec4061659, type: 3}
 --- !u!23 &6209000060664942088
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -731,7 +719,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1194,8 +1182,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6209000061457045798}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.099, y: -0.026, z: -0.083}
-  m_LocalScale: {x: 0.050000004, y: 0.050000004, z: 0.050000004}
+  m_LocalPosition: {x: 0.099, y: -0.0152, z: -0.083}
+  m_LocalScale: {x: 0.84757, y: 0.84757, z: 0.84757}
   m_Children: []
   m_Father: {fileID: 6209000061041214722}
   m_RootOrder: 0
@@ -1207,7 +1195,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6209000061457045798}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 3869936522087249631, guid: 81f380b25ca7b6c4d9835f8ec4061659, type: 3}
 --- !u!23 &6209000061457045801
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1267,7 +1255,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1338,8 +1326,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6209000062050113153}
   m_LocalRotation: {x: -0.0015570816, y: -0.0025855594, z: -0.99984413, w: 0.01739527}
-  m_LocalPosition: {x: 0.099, y: 0.022, z: -0.077}
-  m_LocalScale: {x: 0.05000001, y: 0.05000001, z: 0.050000004}
+  m_LocalPosition: {x: 0.0991, y: 0.0187, z: -0.077}
+  m_LocalScale: {x: 0.83757, y: 0.83757, z: 0.83757}
   m_Children: []
   m_Father: {fileID: 6209000062407864650}
   m_RootOrder: 0
@@ -1351,7 +1339,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6209000062050113153}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 3869936522087249631, guid: 81f380b25ca7b6c4d9835f8ec4061659, type: 3}
 --- !u!23 &6209000062050113156
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1411,7 +1399,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
