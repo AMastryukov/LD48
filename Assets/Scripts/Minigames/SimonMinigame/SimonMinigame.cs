@@ -50,6 +50,7 @@ public class SimonMinigame : BaseMinigame
 
     private void SetupMinigame()
     {
+        currentInputIndex = 0;
         acceptInput = false;
 
         sequenceIDs.Clear();
