@@ -497,5 +497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   darkOverlay: {fileID: 743160065}
+  zoom_fov: 40
+  zoom_speed: 8
   maxUpAngle: 35
   maxDownAngle: 40

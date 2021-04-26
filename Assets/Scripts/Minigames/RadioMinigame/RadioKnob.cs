@@ -15,6 +15,9 @@ public class RadioKnob : Interactable
             return;
         }
         base.Interact();
+        AudioSource src = GetComponent<AudioSource>();
+        src.pitch = Random.Range(0.8f, 1.2f);
+        src.Play();
         StartCoroutine(RotateKnob());
         minigame.toggle(option);
     }
@@ -32,12 +35,10 @@ public class RadioKnob : Interactable
         {
             transform.rotation = Quaternion.Slerp(from, to, timeElapsed / duration);
             timeElapsed += Time.deltaTime;
-            //minigame.lerp = 1 - (timeElapsed / duration);
             yield return null;
         }
 
         transform.rotation = to;
         is_rotating = false;
-        //minigame.lerp = 0;
     }
 }

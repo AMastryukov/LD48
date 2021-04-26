@@ -9,9 +9,14 @@ public class SimonMinigame : BaseMinigame
     public static Action OnDoorsOpened;
 
     [SerializeField] private Animator leverAnimator;
+    [SerializeField] private GameObject knob;
+    [SerializeField] private GameObject button;
     [SerializeField] private List<GameObject> sequenceLights;
     [SerializeField] private TextMeshProUGUI feedbackText;
     [SerializeField] private Transform[] doors;
+    [SerializeField] private AudioClip click;
+    [SerializeField] private AudioClip doorOpen;
+    [SerializeField] private AudioClip doorClose;
 
     private int sequenceLength = 5;
     private bool acceptInput = false;
@@ -19,6 +24,9 @@ public class SimonMinigame : BaseMinigame
     private int currentInputIndex = 0;
     private Color[] lightColors = { Color.green, Color.yellow, Color.red };
     private bool doorsOpen = false;
+    private bool isPressed = false;
+    private bool isTurning = false;
+    private AudioSource src;
 
     private void Awake()
     {
@@ -28,6 +36,7 @@ public class SimonMinigame : BaseMinigame
             sequenceLights[i].GetComponent<Light>().color = lightColors[i];
             sequenceLights[i].GetComponent<Light>().enabled = false;
         }
+        src = GetComponent<AudioSource>();
     }
 
     public void StartMinigame(int difficulty)
@@ -65,7 +74,7 @@ public class SimonMinigame : BaseMinigame
 
     public void PlayerOpenDoors()
     {
-        if (doorsOpen) return;
+        if (doorsOpen || !isActive) return;
         StartCoroutine(PlayCoroutine());
     }
 
@@ -109,6 +118,18 @@ public class SimonMinigame : BaseMinigame
         if (!acceptInput || !isActive) return;
 
         if (inputID == 2) { leverAnimator.Play(0); }
+        else if (inputID == 1 && !isPressed)
+        {
+            StartCoroutine(AnimateButton());
+        }
+        else if (inputID == 0 && !isTurning)
+        {
+            StartCoroutine(AnimateKnob());
+        }
+
+        src.clip = click;
+        src.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+        src.Play();
 
         if (inputID == sequenceIDs[currentInputIndex])
         {
@@ -137,6 +158,10 @@ public class SimonMinigame : BaseMinigame
 
     private IEnumerator OpenDoorsCoroutine()
     {
+        src.clip = doorOpen;
+        src.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+        src.Play();
+
         Quaternion fromLeft = doors[0].transform.rotation;
         Quaternion fromRight = doors[1].transform.rotation;
         Quaternion toLeft = doors[0].transform.rotation * Quaternion.Euler(Vector3.forward * 130f);
@@ -162,6 +187,10 @@ public class SimonMinigame : BaseMinigame
 
     private IEnumerator CloseDoorsCoroutine()
     {
+        src.clip = doorClose;
+        src.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+        src.Play();
+
         Quaternion fromLeft = doors[0].transform.rotation;
         Quaternion fromRight = doors[1].transform.rotation;
         Quaternion toLeft = doors[0].transform.rotation * Quaternion.Euler(Vector3.forward * -130f);
@@ -181,5 +210,35 @@ public class SimonMinigame : BaseMinigame
         }
 
         doorsOpen = false;
+    }
+
+    private IEnumerator AnimateButton()
+    {
+        isPressed = true;
+        Vector3 original = button.transform.localPosition;
+        button.transform.localPosition = original - Vector3.up * 0.03f;
+        yield return new WaitForSeconds(0.2f);
+        button.transform.localPosition = original;
+        isPressed = false;
+    }
+
+    private IEnumerator AnimateKnob()
+    {
+        isTurning = true;
+        Quaternion from = knob.transform.localRotation;
+        Quaternion to = knob.transform.localRotation * Quaternion.Euler(Vector3.up * -90f);
+
+        float duration = 0.5f;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            knob.transform.localRotation = Quaternion.Slerp(from, to, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        knob.transform.localRotation = to;
+        isTurning = false;
     }
 }

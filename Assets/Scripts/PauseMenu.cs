@@ -38,14 +38,16 @@ public class PauseMenu : MonoBehaviour
         {
             DisablePauseUI();
             SetTimeScale(1f);
-
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioListener>().enabled = true;
+            GameObject.FindGameObjectWithTag("Radio").GetComponent<AudioSource>().UnPause();
             playerCamera.enabled = true;
         }
         else
         {
             EnablePauseUI();
             SetTimeScale(0.02f);
-
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioListener>().enabled = false;
+            GameObject.FindGameObjectWithTag("Radio").GetComponent<AudioSource>().Pause();
             playerCamera.enabled = false;
         }
 

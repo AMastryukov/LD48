@@ -3458,10 +3458,6 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8326595426870658064, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8326595426870658064, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
       propertyPath: clip.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 9ca489d84c617ee4096b7da9fde9293a, type: 3}
@@ -3471,18 +3467,6 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 495fd0b3629031c4eaa7afd472b0a228, type: 3}
     - target: {fileID: 8326595426870658064, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
       propertyPath: clip.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: ddc85ccd59ae53e40ad7a6865d97ea73, type: 3}
-    - target: {fileID: 8326595426870658064, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9ca489d84c617ee4096b7da9fde9293a, type: 3}
-    - target: {fileID: 8326595426870658064, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 495fd0b3629031c4eaa7afd472b0a228, type: 3}
-    - target: {fileID: 8326595426870658064, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: ddc85ccd59ae53e40ad7a6865d97ea73, type: 3}
     - target: {fileID: 8326595427393155007, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
@@ -3490,10 +3474,6 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8326595427393155007, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8326595427393155007, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
       propertyPath: clip.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 9ca489d84c617ee4096b7da9fde9293a, type: 3}
@@ -3503,18 +3483,6 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 495fd0b3629031c4eaa7afd472b0a228, type: 3}
     - target: {fileID: 8326595427393155007, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
       propertyPath: clip.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: ddc85ccd59ae53e40ad7a6865d97ea73, type: 3}
-    - target: {fileID: 8326595427393155007, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9ca489d84c617ee4096b7da9fde9293a, type: 3}
-    - target: {fileID: 8326595427393155007, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 495fd0b3629031c4eaa7afd472b0a228, type: 3}
-    - target: {fileID: 8326595427393155007, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: ddc85ccd59ae53e40ad7a6865d97ea73, type: 3}
     - target: {fileID: 8326595427635931198, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
@@ -3522,10 +3490,6 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8326595427635931198, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8326595427635931198, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
       propertyPath: clip.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 9ca489d84c617ee4096b7da9fde9293a, type: 3}
@@ -3535,18 +3499,6 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 495fd0b3629031c4eaa7afd472b0a228, type: 3}
     - target: {fileID: 8326595427635931198, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
       propertyPath: clip.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: ddc85ccd59ae53e40ad7a6865d97ea73, type: 3}
-    - target: {fileID: 8326595427635931198, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 9ca489d84c617ee4096b7da9fde9293a, type: 3}
-    - target: {fileID: 8326595427635931198, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 495fd0b3629031c4eaa7afd472b0a228, type: 3}
-    - target: {fileID: 8326595427635931198, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: clips.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: ddc85ccd59ae53e40ad7a6865d97ea73, type: 3}
     - target: {fileID: 8326595427761816472, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
@@ -6613,7 +6565,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voiceSource: {fileID: 874731677}
   musicSource: {fileID: 1337015749}
+  shipAmbienceSource: {fileID: 0}
   subtitleBox: {fileID: 0}
+  shipAmbience: []
+  voiceLines: []
 --- !u!82 &1337015749
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9216,9 +9171,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a633de23e207dc942beb3f20a4f863b5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3cd8ffe9d8f404e4cbedfaf40e32f07e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
