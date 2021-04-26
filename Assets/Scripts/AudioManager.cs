@@ -10,11 +10,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource voiceSource;
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource shipAmbienceSource;
+    [SerializeField] private AudioSource crashSource;
     [SerializeField] private TextMeshProUGUI subtitleBox;
 
     [Header("Sound Clips")]
     [SerializeField] private AudioClip[] shipAmbience;
     [SerializeField] private SubtitleAudio[] voiceLines;
+    [SerializeField] private AudioClip crashSound;
 
     public void PlayShipAmbience(int ambience)
     {
@@ -28,6 +30,12 @@ public class AudioManager : MonoBehaviour
     public void PlayEndCredits()
     {
         musicSource.Play();
+    }
+
+    public void PlayShipCrash()
+    {
+        crashSource.clip = crashSound;
+        crashSource.Play();
     }
 
     public IEnumerator WaitForVoiceline(int ID)
