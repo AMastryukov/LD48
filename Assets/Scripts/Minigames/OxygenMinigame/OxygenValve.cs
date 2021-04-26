@@ -7,13 +7,23 @@ public class OxygenValve : MonoBehaviour
 {
     public enum Orientation { Up, Right, Down, Left }
     public Orientation currentOrientation = Orientation.Up;
+    [SerializeField] private List<AudioClip> clips;
+    private AudioSource src;
 
     private bool isRotating = false;
+
+    private void Start()
+    {
+        src = GetComponent<AudioSource>();
+    }
 
     public void Rotate()
     {
         if (isRotating) { return; }
-
+        print(clips.Count);
+        src.clip = clips[UnityEngine.Random.Range(0, clips.Count)];
+        src.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+        src.Play();
         StartCoroutine(RotateValve());
     }
 
