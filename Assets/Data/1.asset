@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf761d340533c414ba26e80181b89d72, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  prefabName: Celebration
+  clip: {fileID: 8300000, guid: f1ec710b449627145b995ff50ea5d494, type: 3}
+  subtitle: "I still can\u2019t believe they approved you for the vessel pilot. I
+    thought Zuhair was going to get it for sure. If not him, then Tina. I mean, they
+    were really pushing for it. In hindsight, maybe that\u2019s why they didn\u2019t
+    get it. Oh, did I tell you about the time Zuhair got wasted at the labs? That
+    shit was hilarious, you should have been there."

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf761d340533c414ba26e80181b89d72, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  prefabName: Deep Sweep
+  clip: {fileID: 8300000, guid: 4233c5de48862bf4c8538023c7012863, type: 3}
+  subtitle: "Good work. Alright, I\u2019m receiving the diagnostic data\u2026 Okay,
+    this is strange\u2026 the tool I\u2019m using isn\u2019t showing anything unusual.
+    Tell you what, send me the diagnostic again but this time do a deep sweep."
