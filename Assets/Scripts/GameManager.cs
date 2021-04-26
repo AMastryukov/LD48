@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     private SimonMinigame simonMinigame;
     private OxygenMinigame oxygenMinigame;
     private CodeMinigame codeMinigame;
+    private RadioMinigame radioMinigame;
 
     private TextMeshProUGUI[] texts;
 
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         simonMinigame = FindObjectOfType<SimonMinigame>();
         oxygenMinigame = FindObjectOfType<OxygenMinigame>();
         codeMinigame = FindObjectOfType<CodeMinigame>();
+        radioMinigame = FindObjectOfType<RadioMinigame>();
 
         texts = FindObjectsOfType<TextMeshProUGUI>();
     }
@@ -48,9 +50,9 @@ public class GameManager : MonoBehaviour
     {
         vesselMovement.SetSpeed(3f);
 
-        yield return IntroSequence();
-        yield return FirstSequence();
-        yield return SecondSequence();
+        //yield return IntroSequence();
+        //yield return FirstSequence();
+        //yield return SecondSequence();
         yield return ThirdSequence();
         yield return GameWinSequence();
 
@@ -268,7 +270,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Oh my God... You have to - *breaking up*! Fix- the -- radio!");
 
-        simonMinigame.StartMinigame();
+        radioMinigame.StartMinigame();
 
         minigameFinished = false;
 
@@ -301,11 +303,13 @@ public class GameManager : MonoBehaviour
 
         vesselMovement.SetSpeed(3f, 1f);
         gravityManager.EnableGravity();
-        playerCamera.ShakeCamera(1f, 0.1f);
+        playerCamera.ShakeCamera(0.5f, 0.25f);
 
         yield return new WaitForSeconds(0.5f);
 
         DisableLights();
+
+        yield return new WaitForSeconds(0.25f);
         #endregion
     }
 
@@ -347,13 +351,13 @@ public class GameManager : MonoBehaviour
             if (i == abuelos.Length - 1)
             {
                 playerCamera.FadeCamera(1f, 0f);
-                yield return new WaitForSeconds(0.5f);
             }
             else
             {
                 playerCamera.FadeCamera(1f, 1f);
-                yield return new WaitForSeconds(2f);
             }
+
+            yield return new WaitForSeconds(2f);
         }
 
         // Play soundtrack
