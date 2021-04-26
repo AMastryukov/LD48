@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0034565933, g: 0.0047227507, b: 0.0034565933, a: 1}
+  m_IndirectSpecularColor: {r: 0.0028374402, g: 0.00472166, b: 0.0028374402, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4153,7 +4153,7 @@ GameObject:
   - component: {fileID: 874731677}
   m_Layer: 0
   m_Name: Radio Audio Source
-  m_TagString: Untagged
+  m_TagString: Radio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
