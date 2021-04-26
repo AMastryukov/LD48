@@ -59,7 +59,7 @@ public class PlayerCamera : MonoBehaviour
     {
 		cameraShaking = true;
 
-		Vector3 originalPosition = transform.position;
+		Vector3 originalPosition = transform.localPosition;
 		float timeElapsed = 0f;
 
 		while (timeElapsed < duration)

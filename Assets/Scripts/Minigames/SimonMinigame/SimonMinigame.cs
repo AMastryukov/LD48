@@ -6,6 +6,7 @@ using TMPro;
 
 public class SimonMinigame : BaseMinigame
 {
+    [SerializeField] private Animator leverAnimator;
     [SerializeField] private List<GameObject> sequenceLights;
     [SerializeField] private TextMeshProUGUI feedbackText;
     [SerializeField] private Transform[] doors;
@@ -41,7 +42,6 @@ public class SimonMinigame : BaseMinigame
     public override void FinishMinigame()
     {
         feedbackText.text = "EZ";
-        Debug.Log("[SIMON MINIGAME] Win");
 
         StartCoroutine(CloseDoorsCoroutine());
 

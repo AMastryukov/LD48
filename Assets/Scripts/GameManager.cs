@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameSequence()
     {
-        vesselMovement.SetSpeed(20f, 5f);
+        vesselMovement.SetSpeed(3f);
+        simonMinigame.StartMinigame();
 
         //yield return IntroSequence();
         //yield return FirstSequence();
@@ -65,7 +66,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Credits roll while interview plays in the background");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         #endregion
 
         #region Introductory Voice Lines
@@ -82,11 +83,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("What's happening?! Why are you descending so fast?");
 
         // Turn off lights, shake screen, disable gravity
+        vesselMovement.SetSpeed(25f, 1f);
         playerCamera.ShakeCamera(5, 0.02f);
         gravityManager.DisableGravity();
 
         yield return new WaitForSeconds(5f);
 
+        vesselMovement.SetSpeed(3f, 1f);
         gravityManager.EnableGravity();
         playerCamera.ShakeCamera(1f, 0.1f);
 
@@ -94,7 +97,7 @@ public class GameManager : MonoBehaviour
 
         DisableLights();
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         #endregion
     }
 
@@ -334,7 +337,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameWinSequence()
     {
-        Debug.Log("Loud crash");
+        vesselMovement.SetSpeed(0f);
+
+        Debug.Log("Loud crash, you are in the pit");
 
         yield return new WaitForSeconds(5f);
 
