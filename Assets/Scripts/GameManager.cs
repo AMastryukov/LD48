@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         //yield return IntroSequence();
         //yield return FirstSequence();
         //yield return SecondSequence();
-        yield return ThirdSequence();
+        //yield return ThirdSequence();
         yield return GameWinSequence();
 
         yield return null;
