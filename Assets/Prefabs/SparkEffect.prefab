@@ -168,9 +168,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startSpeed:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 4
-      minScalar: 5
+      minMaxState: 3
+      scalar: 10
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -661,7 +661,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 42.03
+    angle: 73.53
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -743,11 +743,11 @@ ParticleSystem:
     m_TextureColorAffectsParticles: 1
     m_TextureAlphaAffectsParticles: 1
     m_TextureBilinearFiltering: 0
-    randomDirectionAmount: 0
+    randomDirectionAmount: 0.5
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.04
+      value: 0.4
       mode: 0
       spread: 0
       speed:
@@ -976,7 +976,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 15
+        scalar: 100
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1030,11 +1030,11 @@ ParticleSystem:
       repeatInterval: 0.5
       probability: 1
     - serializedVersion: 2
-      time: 0
+      time: 0.5
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 15
+        scalar: 100
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1092,7 +1092,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 15
+        scalar: 100
         minScalar: 30
         maxCurve:
           serializedVersion: 2
@@ -1150,7 +1150,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 15
+        scalar: 100
         minScalar: 30
         maxCurve:
           serializedVersion: 2
