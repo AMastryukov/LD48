@@ -33,23 +33,30 @@ public class RadioMinigame : BaseMinigame
     private int current_freq;
 
     public float lerp = 1;
+    private bool minigame_started = false;
+
+    private AudioSource src;
 
     public override void StartMinigame()
     {
         base.StartMinigame();
+        minigame_started = true;
         current_amp += Random.Range(1, amp_presets.Length);
         //current_freq += Random.Range(1, freq_presets.Length);
         current_x_speed += Random.Range(1, x_speed_presets.Length);
         current_y_speed += Random.Range(1, y_speed_presets.Length);
         statusLight.material.color = Color.red;
         statusLight2.color = Color.red;
+        src.Play();
     }
 
     public override void FinishMinigame()
     {
         base.FinishMinigame();
+        minigame_started = false;
         statusLight.material.color = Color.green;
         statusLight2.color = Color.green;
+        src.Stop();
     }
 
 
@@ -57,11 +64,12 @@ public class RadioMinigame : BaseMinigame
     void Start()
     {
         statusLight.material.color = Color.green;
+        statusLight2.color = Color.green;
         current_y_speed = y_speed_target;
         current_x_speed = x_speed_target;
         current_amp = amp_target;
         current_freq = freq_target;
-        StartMinigame();
+        src = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -88,6 +96,10 @@ public class RadioMinigame : BaseMinigame
 
     public void toggle(ToggleOption option)
     {
+        if (!minigame_started)
+        {
+            return;
+        }
         switch (option)
         {
             case ToggleOption.AMPLITUDE:
