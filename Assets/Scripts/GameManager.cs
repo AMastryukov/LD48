@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
         vesselMovement.SetSpeed(3f);
 
-        // yield return IntroSequence();
+        yield return IntroSequence();
         //yield return FirstSequence();
         //yield return SecondSequence();
         yield return ThirdSequence();

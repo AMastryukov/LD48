@@ -6565,7 +6565,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   voiceSource: {fileID: 874731677}
   musicSource: {fileID: 1337015749}
+  shipAmbienceSource: {fileID: 0}
   subtitleBox: {fileID: 0}
+  shipAmbience: []
+  voiceLines: []
 --- !u!82 &1337015749
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9168,9 +9171,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a633de23e207dc942beb3f20a4f863b5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 3cd8ffe9d8f404e4cbedfaf40e32f07e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

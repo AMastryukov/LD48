@@ -74,7 +74,7 @@ public class SimonMinigame : BaseMinigame
 
     public void PlayerOpenDoors()
     {
-        if (doorsOpen) return;
+        if (doorsOpen || !isActive) return;
         StartCoroutine(PlayCoroutine());
     }
 
