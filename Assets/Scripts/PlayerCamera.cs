@@ -48,6 +48,13 @@ public class PlayerCamera : MonoBehaviour
 		StartCoroutine(CameraShake(duration, magnitude));
 	}
 
+	public void WaveCamera(float duration = 1f, float magnitude = 0.1f)
+	{
+		if (cameraShaking) return;
+
+		StartCoroutine(CameraWave(duration, magnitude));
+	}
+
 	public void FadeCamera(float alpha, float duration = 1f)
     {
 		if (cameraFading) return;
@@ -79,6 +86,31 @@ public class PlayerCamera : MonoBehaviour
 
 		cameraShaking = false;
     }
+
+	private IEnumerator CameraWave(float duration, float magnitude)
+	{
+		cameraShaking = true;
+
+		Quaternion originalRotation = transform.localRotation;
+		float timeElapsed = 0f;
+
+		while (timeElapsed < duration)
+		{
+			float x = Mathf.Sin(timeElapsed) * magnitude;
+			float y = Mathf.Cos(timeElapsed) * magnitude;
+			float z = Mathf.Sin(timeElapsed) * magnitude;
+
+			transform.localRotation = Quaternion.Euler(originalRotation.eulerAngles.x + x, originalRotation.eulerAngles.y + y, originalRotation.eulerAngles.z + z);
+
+			timeElapsed += Time.deltaTime;
+
+			yield return null;
+		}
+
+		transform.localRotation = originalRotation;
+
+		cameraShaking = false;
+	}
 
 	private IEnumerator FadeCameraCoroutine(float alpha, float duration)
     {

@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AudioManager : MonoBehaviour
 {
+    public float EndCreditsSongLength { get { return musicSource.clip.length; } }
 
-    private AudioSource src;
-    [SerializeField] TMPro.TextMeshProUGUI subtitleBox;
+    [SerializeField] private AudioSource voiceSource;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private TextMeshProUGUI subtitleBox;
 
-    private void Start()
+    public void PlayEndCredits()
     {
-        
+        musicSource.Play();
     }
 
-    public IEnumerator play(SubtitleAudio sub)
+    public IEnumerator PlayVoiceline(SubtitleAudio sub)
     {
-        src.clip = sub.clip;
-        src.Play();
+        voiceSource.clip = sub.clip;
+        voiceSource.Play();
+
         subtitleBox.text = sub.subtitle;
-        yield return new WaitForSeconds(src.clip.length);
+
+        yield return new WaitForSeconds(voiceSource.clip.length);
+
         subtitleBox.text = "";
     }
 }
