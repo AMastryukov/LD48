@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     private GravityManager gravityManager;
     private AudioManager audioManager;
     private PlayerCamera playerCamera;
+    private VesselMovement vesselMovement;
 
     private SimonMinigame simonMinigame;
     private OxygenMinigame oxygenMinigame;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
         gravityManager = FindObjectOfType<GravityManager>();
         audioManager = FindObjectOfType<AudioManager>();
         playerCamera = FindObjectOfType<PlayerCamera>();
+        vesselMovement = FindObjectOfType<VesselMovement>();
 
         simonMinigame = FindObjectOfType<SimonMinigame>();
         oxygenMinigame = FindObjectOfType<OxygenMinigame>();
@@ -43,11 +45,15 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameSequence()
     {
+        vesselMovement.SetSpeed(20f, 5f);
+
         //yield return IntroSequence();
         //yield return FirstSequence();
         //yield return SecondSequence();
-        yield return ThirdSequence();
-        yield return GameWinSequence();
+        //yield return ThirdSequence();
+        //yield return GameWinSequence();
+
+        yield return null;
     }
 
     private IEnumerator IntroSequence()
