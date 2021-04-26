@@ -6,16 +6,22 @@ public class PlayerCamera : MonoBehaviour
 	public bool IsLocked { get; set; } = false;
 
 	[SerializeField] private CanvasGroup darkOverlay;
+	[SerializeField] private float zoom_fov = 30f;
+	[SerializeField] private float zoom_speed = 2f;
 	[SerializeField] private float maxUpAngle = 45f;
 	[SerializeField] private float maxDownAngle = 25f;
 
+	private float default_fov;
 	private float speed = 1f;
 	private Vector2 rotation;
 	private bool cameraShaking = false;
 	private bool cameraFading = false;
+	private Camera cam;
 
     private void Start()
     {
+		cam = GetComponent<Camera>();
+		default_fov = cam.fieldOfView;
 		speed = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
     }
 
@@ -141,6 +147,15 @@ public class PlayerCamera : MonoBehaviour
 		rotation.x = Mathf.Clamp(rotation.x, -maxUpAngle, maxDownAngle);
 
 		transform.rotation = Quaternion.Euler(rotation.x, rotation.y, 0f);
+
+		if (Input.GetMouseButton(1))
+        {
+			cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, zoom_fov, Time.deltaTime * zoom_speed);
+        }
+        else
+        {
+			cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, default_fov, Time.deltaTime * zoom_speed);
+		}
 	}
 
 	private void PollInteractionInput()
