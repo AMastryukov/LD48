@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2061245193959420713}
   - component: {fileID: 3113350738993069196}
   - component: {fileID: 923289916621801542}
+  - component: {fileID: 5069197106869784390}
   m_Layer: 0
   m_Name: Radio
   m_TagString: Untagged
@@ -86,6 +87,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5069197106869784390
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1716103702585993619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.87729007, y: 0.23158357, z: 0.55076456}
+  m_Center: {x: 0.007139864, y: 0.013843723, z: 0.01048542}
 --- !u!1 &2481034352180476503
 GameObject:
   m_ObjectHideFlags: 0

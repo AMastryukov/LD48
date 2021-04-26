@@ -113,7 +113,7 @@ public class PlayerCamera : MonoBehaviour
 
 	private void PollInteractionInput()
     {
-		if (Input.GetKeyDown(KeyCode.E))
+		if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit;
 
