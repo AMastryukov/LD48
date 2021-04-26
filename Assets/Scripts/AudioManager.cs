@@ -9,22 +9,44 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource voiceSource;
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource shipAmbienceSource;
     [SerializeField] private TextMeshProUGUI subtitleBox;
+
+    [Header("Sound Clips")]
+    [SerializeField] private AudioClip[] shipAmbience;
+    [SerializeField] private SubtitleAudio[] voiceLines;
+
+    public void PlayShipAmbience(int ambience)
+    {
+        if (ambience >= shipAmbience.Length) { return; }
+
+        shipAmbienceSource.Stop();
+        shipAmbienceSource.clip = shipAmbience[ambience];
+        shipAmbienceSource.Play();
+    }
 
     public void PlayEndCredits()
     {
         musicSource.Play();
     }
 
-    public IEnumerator PlayVoiceline(SubtitleAudio sub)
+    public IEnumerator WaitForVoiceline(int ID)
     {
-        voiceSource.clip = sub.clip;
+        if (ID >= voiceLines.Length) { yield break; }
+
+        voiceSource.clip = voiceLines[ID].clip;
         voiceSource.Play();
 
-        subtitleBox.text = sub.subtitle;
+        if (subtitleBox != null)
+        {
+            subtitleBox.text = voiceLines[ID].subtitle;
+        }
 
         yield return new WaitForSeconds(voiceSource.clip.length);
 
-        subtitleBox.text = "";
+        if (subtitleBox != null)
+        {
+            subtitleBox.text = "";
+        }
     }
 }

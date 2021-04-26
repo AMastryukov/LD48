@@ -50,9 +50,9 @@ public class GameManager : MonoBehaviour
     {
         vesselMovement.SetSpeed(3f);
 
-        //yield return IntroSequence();
-        yield return FirstSequence();
-        yield return SecondSequence();
+        // yield return IntroSequence();
+        //yield return FirstSequence();
+        //yield return SecondSequence();
         yield return ThirdSequence();
         yield return GameWinSequence();
 
@@ -61,14 +61,16 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator IntroSequence()
     {
-        #region Credits and Interview
+        #region Entry Point
         // Lock the player controls
         playerCamera.IsLocked = true;
         playerCamera.FadeCamera(1f, 0f);
 
-        Debug.Log("Credits roll while interview plays in the background");
+        audioManager.PlayShipAmbience(0);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2);
+
+        yield return audioManager.WaitForVoiceline(0);
         #endregion
 
         #region Introductory Voice Lines
@@ -76,14 +78,13 @@ public class GameManager : MonoBehaviour
         playerCamera.FadeCamera(0f, 2f);
         playerCamera.IsLocked = false;
 
-        Debug.Log("You are descending, everything seems good");
-
+        // Let the player fuck around in the ship for a bit
         yield return new WaitForSeconds(5f);
+
+        yield return audioManager.WaitForVoiceline(1);
         #endregion
 
         #region First Blackout
-        Debug.Log("What's happening?! Why are you descending so fast?");
-
         // Turn off lights, shake screen, disable gravity
         vesselMovement.SetSpeed(25f, 1f);
         playerCamera.ShakeCamera(5, 0.02f);
@@ -107,11 +108,33 @@ public class GameManager : MonoBehaviour
     {
         #region Simon Minigame
         EnableLights();
+        audioManager.PlayShipAmbience(1);
 
-        Debug.Log("You should run diagnostics (Simon Game). The panel is behind you.");
+        yield return new WaitForSeconds(2f);
+        yield return audioManager.WaitForVoiceline(2);
 
         simonMinigame.StartMinigame();
 
+        #region Wait For Door Open
+        bool doorOpened = false;
+
+        Action doorOpenEvent = () => 
+        {
+            doorOpened = true;
+        };
+
+        SimonMinigame.OnDoorsOpened += doorOpenEvent;
+
+        while (!doorOpened)
+        { 
+            yield return null; 
+        }
+
+        SimonMinigame.OnDoorsOpened -= finishMinigameEvent;
+
+        #endregion
+
+        #region Wait for Minigame Completion
         minigameFinished = false;
 
         finishMinigameEvent = () => 
@@ -121,6 +144,9 @@ public class GameManager : MonoBehaviour
 
         SimonMinigame.OnMinigameFinished += finishMinigameEvent;
 
+        // This has to be after the event is subscribned to, or else it will break
+        yield return audioManager.WaitForVoiceline(3);
+
         while (!minigameFinished)
         { 
             yield return null; 
@@ -128,14 +154,12 @@ public class GameManager : MonoBehaviour
 
         SimonMinigame.OnMinigameFinished -= finishMinigameEvent;
 
-        Debug.Log("Everything seems to be fine.");
+        #endregion
 
-        yield return new WaitForSeconds(2f);
+        yield return audioManager.WaitForVoiceline(4);
         #endregion
 
         #region Second Blackout
-        Debug.Log("AGAIN? What is happening!?");
-
         // Turn off lights, shake screen, disable gravity
         vesselMovement.SetSpeed(25f, 1f);
         playerCamera.ShakeCamera(5, 0.02f);
@@ -159,8 +183,7 @@ public class GameManager : MonoBehaviour
     {
         #region Oxygen Minigame
         EnableLights();
-
-        Debug.Log("Do the Oxygen Minigame. Check the front panel for information and spin the valves to match the orientations.");
+        audioManager.PlayShipAmbience(2);
 
         oxygenMinigame.StartMinigame();
 
@@ -173,6 +196,10 @@ public class GameManager : MonoBehaviour
 
         OxygenMinigame.OnMinigameFinished += finishMinigameEvent;
 
+        // Has to be after event subscribtion to minigame
+        yield return new WaitForSeconds(2f);
+        yield return audioManager.WaitForVoiceline(5);
+
         while (!minigameFinished)
         {
             yield return null;
@@ -180,16 +207,10 @@ public class GameManager : MonoBehaviour
 
         OxygenMinigame.OnMinigameFinished -= finishMinigameEvent;
 
-        Debug.Log("Oxygen is back up.");
-
         yield return new WaitForSeconds(2f);
         #endregion
 
         #region Simon Minigame
-        EnableLights();
-
-        Debug.Log("Simon Game again. You already know how this is done.");
-
         simonMinigame.StartMinigame(8);
 
         minigameFinished = false;
@@ -201,6 +222,9 @@ public class GameManager : MonoBehaviour
 
         SimonMinigame.OnMinigameFinished += finishMinigameEvent;
 
+        // Has to be after the event subscription to minigame
+        yield return audioManager.WaitForVoiceline(6);
+
         while (!minigameFinished)
         {
             yield return null;
@@ -208,9 +232,9 @@ public class GameManager : MonoBehaviour
 
         SimonMinigame.OnMinigameFinished -= finishMinigameEvent;
 
-        Debug.Log("Everything seems to be fine.");
+        yield return audioManager.WaitForVoiceline(7);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         #endregion
 
         #region Third Blackout
@@ -240,8 +264,6 @@ public class GameManager : MonoBehaviour
         #region Code Minigame
         EnableLights();
 
-        Debug.Log("Send me the detailed diagnostic encoded data! Code minigame");
-
         codeMinigame.StartMinigame();
 
         minigameFinished = false;
@@ -253,22 +275,19 @@ public class GameManager : MonoBehaviour
 
         CodeMinigame.OnMinigameFinished += finishMinigameEvent;
 
+        yield return new WaitForSeconds(2f);
+        yield return audioManager.WaitForVoiceline(8);
+
         while (!minigameFinished)
         {
             yield return null;
         }
 
         CodeMinigame.OnMinigameFinished -= finishMinigameEvent;
-
-        Debug.Log("I'm receiving the diagnostics. It's decrypting...");
-
-        yield return new WaitForSeconds(2f);
         #endregion
 
         #region Radio Minigame
         EnableLights();
-
-        Debug.Log("Oh my God... You have to - *breaking up*! Fix- the -- radio!");
 
         radioMinigame.StartMinigame();
 
@@ -281,18 +300,18 @@ public class GameManager : MonoBehaviour
 
         RadioMinigame.OnMinigameFinished += finishMinigameEvent;
 
+        yield return audioManager.WaitForVoiceline(9);
+
         while (!minigameFinished)
         {
             yield return null;
         }
 
         RadioMinigame.OnMinigameFinished -= finishMinigameEvent;
-
-        yield return new WaitForSeconds(5f);
         #endregion
 
         #region Final Blackout
-        Debug.Log("Listen to me! There is something outside of the ship! You must head for the surface IMMEDIATELY!");
+        yield return audioManager.WaitForVoiceline(10);
 
         // Turn off lights, shake screen, disable gravity
         vesselMovement.SetSpeed(25f, 1f);

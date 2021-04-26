@@ -10,7 +10,6 @@ public class CodeMinigame : BaseMinigame
     [SerializeField] private TMPro.TextMeshProUGUI keypad_display;
     [SerializeField] private TMPro.TextMeshProUGUI code_display;
     [SerializeField] private TMPro.TextMeshProUGUI mapping_display;
-    [SerializeField] private AudioClip correctSound;
     [SerializeField] private AudioClip incorrectSound;
     private AudioSource src;
 
@@ -113,8 +112,6 @@ public class CodeMinigame : BaseMinigame
             {
                 keypad_display.text = "Correct";
                 current_sequence = "";
-                src.clip = correctSound;
-                src.Play();
                 FinishMinigame();
             }
             else
