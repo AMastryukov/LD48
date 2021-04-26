@@ -20,7 +20,6 @@ public class OxygenValve : MonoBehaviour
     public void Rotate()
     {
         if (isRotating) { return; }
-        print(clips.Count);
         src.clip = clips[UnityEngine.Random.Range(0, clips.Count)];
         src.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
         src.Play();

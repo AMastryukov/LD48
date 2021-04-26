@@ -50,9 +50,9 @@ public class GameManager : MonoBehaviour
     {
         vesselMovement.SetSpeed(3f);
 
-        // yield return IntroSequence();
-        //yield return FirstSequence();
-        //yield return SecondSequence();
+        yield return IntroSequence();
+        yield return FirstSequence();
+        yield return SecondSequence();
         yield return ThirdSequence();
         yield return GameWinSequence();
 
@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
         vesselMovement.SetSpeed(25f, 1f);
         playerCamera.ShakeCamera(5, 0.02f);
         gravityManager.DisableGravity();
+
+        audioManager.PlayShipCrash();
 
         yield return new WaitForSeconds(5f);
 
@@ -165,6 +167,8 @@ public class GameManager : MonoBehaviour
         playerCamera.ShakeCamera(5, 0.02f);
         gravityManager.DisableGravity();
 
+        audioManager.PlayShipCrash();
+
         yield return new WaitForSeconds(5f);
 
         vesselMovement.SetSpeed(3f, 1f);
@@ -233,17 +237,15 @@ public class GameManager : MonoBehaviour
         SimonMinigame.OnMinigameFinished -= finishMinigameEvent;
 
         yield return audioManager.WaitForVoiceline(7);
-
-        yield return new WaitForSeconds(1f);
         #endregion
 
         #region Third Blackout
-        Debug.Log("What is that? Did you see it? Some formation... or... something outside the vessel!");
-
         // Turn off lights, shake screen, disable gravity
         vesselMovement.SetSpeed(25f, 1f);
         playerCamera.ShakeCamera(5, 0.02f);
         gravityManager.DisableGravity();
+
+        audioManager.PlayShipCrash();
 
         yield return new WaitForSeconds(5f);
 
@@ -318,6 +320,8 @@ public class GameManager : MonoBehaviour
         playerCamera.ShakeCamera(5, 0.02f);
         gravityManager.DisableGravity();
 
+        audioManager.PlayShipCrash();
+
         yield return new WaitForSeconds(5f);
 
         vesselMovement.SetSpeed(3f, 1f);
@@ -334,7 +338,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GameWinSequence()
     {
-        Debug.Log("Loud crash, you are in the pit");
+        audioManager.PlayShipAmbience(3);
 
         // Teleport player camera and lock it
         vesselMovement.SetSpeed(0f);
@@ -346,8 +350,6 @@ public class GameManager : MonoBehaviour
         playerCamera.WaveCamera(100f, 2f);
 
         yield return new WaitForSeconds(3f);
-
-        Debug.Log("You only see the light in the front of the vessel. Interior lights are out.");
 
         PlaySpark();
 
