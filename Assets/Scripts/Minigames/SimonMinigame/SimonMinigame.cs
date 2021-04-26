@@ -6,6 +6,8 @@ using TMPro;
 
 public class SimonMinigame : BaseMinigame
 {
+    public static Action OnDoorsOpened;
+
     [SerializeField] private Animator leverAnimator;
     [SerializeField] private List<GameObject> sequenceLights;
     [SerializeField] private TextMeshProUGUI feedbackText;
@@ -16,6 +18,7 @@ public class SimonMinigame : BaseMinigame
     private List<int> sequenceIDs = new List<int>();
     private int currentInputIndex = 0;
     private Color[] lightColors = { Color.green, Color.yellow, Color.red };
+    private bool doorsOpen = false;
 
     private void Awake()
     {
@@ -58,9 +61,18 @@ public class SimonMinigame : BaseMinigame
         {
             sequenceIDs.Add(UnityEngine.Random.Range(0, 3));
         }
+    }
 
-        StartCoroutine(OpenDoorsCoroutine());
-        StartCoroutine(DisplaySequence());
+    public void PlayerOpenDoors()
+    {
+        if (doorsOpen) return;
+        StartCoroutine(PlayCoroutine());
+    }
+
+    private IEnumerator PlayCoroutine()
+    {
+        yield return OpenDoorsCoroutine();
+        yield return DisplaySequence();
     }
 
     private IEnumerator DisplaySequence()
@@ -142,6 +154,10 @@ public class SimonMinigame : BaseMinigame
 
             yield return null;
         }
+
+        doorsOpen = true;
+
+        OnDoorsOpened?.Invoke();
     }
 
     private IEnumerator CloseDoorsCoroutine()
@@ -163,5 +179,7 @@ public class SimonMinigame : BaseMinigame
 
             yield return null;
         }
+
+        doorsOpen = false;
     }
 }

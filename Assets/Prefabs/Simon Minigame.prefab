@@ -271,6 +271,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2663064379379071791}
+  - component: {fileID: 5163297652290363771}
+  - component: {fileID: 4238573295692670449}
   m_Layer: 0
   m_Name: Left Door Pivot
   m_TagString: Untagged
@@ -293,6 +295,47 @@ Transform:
   m_Father: {fileID: 6249674340780889599}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5163297652290363771
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3116528366330618488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.79128134, y: 0.055289112, z: 1.0475954}
+  m_Center: {x: 0.38739318, y: 0.009840078, z: 0.4263478}
+--- !u!114 &4238573295692670449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3116528366330618488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93e983c754ed5494b98dbdc6c944cd3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 5
+  OnInteracted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6209000060550147725}
+        m_TargetAssemblyTypeName: SimonMinigame, Assembly-CSharp
+        m_MethodName: PlayerOpenDoors
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5132714580204318540
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,7 +871,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 55277f4b86a0fae47acf2fe235932122, type: 2}
   m_sharedMaterial: {fileID: -7300511607655380845, guid: 55277f4b86a0fae47acf2fe235932122, type: 2}
