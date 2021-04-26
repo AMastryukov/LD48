@@ -48,9 +48,9 @@ public class GameManager : MonoBehaviour
     {
         vesselMovement.SetSpeed(3f);
 
-        //yield return IntroSequence();
-        //yield return FirstSequence();
-        //yield return SecondSequence();
+        yield return IntroSequence();
+        yield return FirstSequence();
+        yield return SecondSequence();
         yield return ThirdSequence();
         yield return GameWinSequence();
 
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
         Debug.Log("Credits roll while interview plays in the background");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         #endregion
 
         #region Introductory Voice Lines
@@ -306,13 +306,13 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         DisableLights();
-
-        yield return new WaitForSeconds(3f);
         #endregion
     }
 
     private IEnumerator GameWinSequence()
     {
+        Debug.Log("Loud crash, you are in the pit");
+
         // Teleport player camera and lock it
         vesselMovement.SetSpeed(0f);
         playerCamera.FadeCamera(1f, 0f);
@@ -321,8 +321,6 @@ public class GameManager : MonoBehaviour
         playerCamera.transform.rotation = brokenVesselCamera.transform.rotation;
         playerCamera.transform.SetParent(brokenVesselCamera);
         playerCamera.WaveCamera(100f, 2f);
-
-        Debug.Log("Loud crash, you are in the pit");
 
         yield return new WaitForSeconds(3f);
 
