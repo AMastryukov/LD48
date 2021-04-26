@@ -32,11 +32,12 @@ public class RadioKnob : Interactable
         {
             transform.rotation = Quaternion.Slerp(from, to, timeElapsed / duration);
             timeElapsed += Time.deltaTime;
-
+            //minigame.lerp = 1 - (timeElapsed / duration);
             yield return null;
         }
 
         transform.rotation = to;
         is_rotating = false;
+        //minigame.lerp = 0;
     }
 }
