@@ -8,5 +8,7 @@ public class SubtitleAudio : ScriptableObject
     public string prefabName;
 
     public AudioClip clip;
+
+    [TextArea]
     public string subtitle;
 }

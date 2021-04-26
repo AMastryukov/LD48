@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf761d340533c414ba26e80181b89d72, type: 3}
+  m_Name: 7
+  m_EditorClassIdentifier: 
+  prefabName: Encrypted
+  clip: {fileID: 8300000, guid: 169944be46609774b9f77d682699bd07, type: 3}
+  subtitle: "Alright, I\u2019m receiving the data. Damn, this stream is massive\u2026
+    Hang on, what the hell\u2026? This data is encrypted. Are you fucking serious?
+    Why in the hell would they encrypt diagnostic data? Ugh, fuck. Hold on, give
+    me a second\u2026"

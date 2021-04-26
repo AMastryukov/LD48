@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf761d340533c414ba26e80181b89d72, type: 3}
+  m_Name: 10
+  m_EditorClassIdentifier: 
+  prefabName: Outside
+  clip: {fileID: 8300000, guid: 8f290c9ac2ab3b64b9c62f13f81f350b, type: 3}
+  subtitle: Hello, can you hear me!? Can you hear me!? There is something outside
+    the vessel! You need to get back to the surface RIGHT NOW! You need to enable
+    the thrusters!
