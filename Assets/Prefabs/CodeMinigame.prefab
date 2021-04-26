@@ -4426,8 +4426,7 @@ MonoBehaviour:
   keypad_display: {fileID: 142396008863382311}
   code_display: {fileID: 142396008966388566}
   mapping_display: {fileID: 142396009114467150}
-  correctSound: {fileID: 8300000, guid: 1fb69d9fd8ae5c34e8e3e4b5caf1138e, type: 3}
-  incorrectSound: {fileID: 8300000, guid: 735c0eccc75d13e4f9b99d74ffaa5423, type: 3}
+  incorrectSound: {fileID: 8300000, guid: 725af807e1d96d04bbc4f141e93dcb01, type: 3}
 --- !u!82 &5852043653247517774
 AudioSource:
   m_ObjectHideFlags: 0
