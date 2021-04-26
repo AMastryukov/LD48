@@ -27,6 +27,11 @@ public class AudioManager : MonoBehaviour
         shipAmbienceSource.Play();
     }
 
+    public void StopShipAmbience()
+    {
+        shipAmbienceSource.Stop();
+    }
+
     public void PlayEndCredits()
     {
         musicSource.Play();

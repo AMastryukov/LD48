@@ -50,10 +50,10 @@ public class GameManager : MonoBehaviour
     {
         vesselMovement.SetSpeed(3f);
 
-        yield return IntroSequence();
-        yield return FirstSequence();
-        yield return SecondSequence();
-        yield return ThirdSequence();
+        // yield return IntroSequence();
+        // yield return FirstSequence();
+        // yield return SecondSequence();
+        // yield return ThirdSequence();
         yield return GameWinSequence();
 
         yield return null;
@@ -382,6 +382,7 @@ public class GameManager : MonoBehaviour
         }
 
         // Play soundtrack
+        audioManager.StopShipAmbience();
         audioManager.PlayEndCredits();
 
         yield return new WaitForSeconds(audioManager.EndCreditsSongLength);
