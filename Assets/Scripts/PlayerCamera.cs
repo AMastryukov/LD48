@@ -6,6 +6,7 @@ public class PlayerCamera : MonoBehaviour
 	public bool IsLocked { get; set; } = false;
 
 	[SerializeField] private CanvasGroup darkOverlay;
+	[SerializeField] private CanvasGroup interactCanvas;
 	[SerializeField] private float zoom_fov = 30f;
 	[SerializeField] private float zoom_speed = 2f;
 	[SerializeField] private float maxUpAngle = 45f;
@@ -17,13 +18,16 @@ public class PlayerCamera : MonoBehaviour
 	private bool cameraShaking = false;
 	private bool cameraFading = false;
 	private Camera cam;
+	private RaycastHit hit;
+	private Interactable activeInteractable;
 
-    private void Start()
+	private void Start()
     {
 		cam = GetComponent<Camera>();
 		default_fov = cam.fieldOfView;
 		speed = PlayerPrefs.GetFloat("MouseSensitivity", 1f);
-    }
+		interactCanvas.alpha = 0f;
+	}
 
     private void OnEnable()
     {
@@ -160,16 +164,22 @@ public class PlayerCamera : MonoBehaviour
 
 	private void PollInteractionInput()
     {
-		if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
+		if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
 		{
-			RaycastHit hit;
+			activeInteractable = hit.collider.GetComponent<Interactable>();
 
-			if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
+			if (activeInteractable != null)
 			{
-				if (hit.collider.GetComponent<Interactable>() != null)
-                {
-					hit.collider.GetComponent<Interactable>().Interact(this, hit);
-                }
+				interactCanvas.alpha = 1f;
+
+				if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
+				{
+					activeInteractable.Interact(this, hit);
+				}
+			}
+			else
+            {
+				interactCanvas.alpha = 0f;
 			}
 		}
 	}
