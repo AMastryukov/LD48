@@ -30,6 +30,15 @@ public class OxygenValve : MonoBehaviour
     {
         isRotating = true;
 
+        if ((int)currentOrientation == Enum.GetNames(typeof(Orientation)).Length - 1)
+        {
+            currentOrientation = 0;
+        }
+        else
+        {
+            currentOrientation++;
+        }
+
         Quaternion from = transform.rotation;
         Quaternion to = transform.rotation * Quaternion.Euler(Vector3.up * -90f);
 
@@ -42,15 +51,6 @@ public class OxygenValve : MonoBehaviour
             timeElapsed += Time.deltaTime;
 
             yield return null;
-        }
-
-        if ((int)currentOrientation == Enum.GetNames(typeof(Orientation)).Length - 1)
-        {
-            currentOrientation = 0;
-        }
-        else
-        {
-            currentOrientation++;
         }
 
         transform.rotation = to;

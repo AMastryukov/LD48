@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     private TextMeshProUGUI[] texts;
 
+    private float[] vesselLightsIntensities;
+
     Action finishMinigameEvent;
     bool minigameFinished = false;
 
@@ -41,6 +43,12 @@ public class GameManager : MonoBehaviour
         radioMinigame = FindObjectOfType<RadioMinigame>();
 
         texts = FindObjectsOfType<TextMeshProUGUI>();
+
+        vesselLightsIntensities = new float[vesselLights.Length];
+        for (int i = 0; i < vesselLights.Length; i++)
+        {
+            vesselLightsIntensities[i] = vesselLights[i].intensity;
+        }
     }
 
     private void Start()
@@ -91,6 +99,7 @@ public class GameManager : MonoBehaviour
         vesselMovement.SetSpeed(25f, 1f);
         playerCamera.ShakeCamera(5, 0.02f);
         gravityManager.DisableGravity();
+        DimLights();
 
         audioManager.PlayShipCrash();
 
@@ -168,6 +177,7 @@ public class GameManager : MonoBehaviour
         vesselMovement.SetSpeed(25f, 1f);
         playerCamera.ShakeCamera(5, 0.02f);
         gravityManager.DisableGravity();
+        DimLights();
 
         audioManager.PlayShipCrash();
 
@@ -212,8 +222,6 @@ public class GameManager : MonoBehaviour
         }
 
         OxygenMinigame.OnMinigameFinished -= finishMinigameEvent;
-
-        yield return new WaitForSeconds(2f);
         #endregion
 
         #region Simon Minigame
@@ -246,6 +254,7 @@ public class GameManager : MonoBehaviour
         vesselMovement.SetSpeed(25f, 1f);
         playerCamera.ShakeCamera(5, 0.02f);
         gravityManager.DisableGravity();
+        DimLights();
 
         audioManager.PlayShipCrash();
 
@@ -321,6 +330,7 @@ public class GameManager : MonoBehaviour
         vesselMovement.SetSpeed(25f, 1f);
         playerCamera.ShakeCamera(5, 0.02f);
         gravityManager.DisableGravity();
+        DimLights();
 
         audioManager.PlayShipCrash();
 
@@ -388,7 +398,7 @@ public class GameManager : MonoBehaviour
         audioManager.PlayEndCredits();
 
         yield return new WaitForSeconds(2f);
-        credits.ShowCredits(audioManager.EndCreditsSongLength);
+        credits.ShowCredits(audioManager.EndCreditsSongLength - 2f);
         yield return new WaitForSeconds(audioManager.EndCreditsSongLength);
 
         SceneManager.LoadScene("Main Menu");
@@ -413,6 +423,8 @@ public class GameManager : MonoBehaviour
         {
             texts[i].enabled = true;
         }
+
+        ResetLightIntensity();
     }
 
     private void DisableLights()
@@ -425,6 +437,22 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < texts.Length; i++)
         {
             texts[i].enabled = false;
+        }
+    }
+
+    private void DimLights()
+    {
+        for (int i = 0; i < vesselLights.Length; i++)
+        {
+            vesselLights[i].intensity = vesselLightsIntensities[i] / 2f;
+        }
+    }
+
+    private void ResetLightIntensity()
+    {
+        for (int i = 0; i < vesselLights.Length; i++)
+        {
+            vesselLights[i].intensity = vesselLightsIntensities[i];
         }
     }
 }

@@ -54,6 +54,7 @@ public class SimonMinigame : BaseMinigame
     public override void FinishMinigame()
     {
         feedbackText.text = "EZ";
+        feedbackText.color = Color.green;
 
         StartCoroutine(CloseDoorsCoroutine());
 
@@ -64,6 +65,9 @@ public class SimonMinigame : BaseMinigame
     {
         currentInputIndex = 0;
         acceptInput = false;
+
+        feedbackText.text = "";
+        feedbackText.color = Color.white;
 
         sequenceIDs.Clear();
         for (int i = 0; i < sequenceLength; i++)
@@ -88,8 +92,10 @@ public class SimonMinigame : BaseMinigame
     {
         yield return new WaitForSeconds(1f);
 
+        feedbackText.color = Color.white;
+
         // Flash the little things in sequence to show the player what the order is
-        for(int i = 0; i < sequenceIDs.Count; i++)
+        for (int i = 0; i < sequenceIDs.Count; i++)
         {
             feedbackText.text = (i + 1).ToString();
 
@@ -147,6 +153,7 @@ public class SimonMinigame : BaseMinigame
             currentInputIndex = 0;
 
             feedbackText.text = "X";
+            feedbackText.color = Color.red;
 
             StartCoroutine(DisplaySequence());
 

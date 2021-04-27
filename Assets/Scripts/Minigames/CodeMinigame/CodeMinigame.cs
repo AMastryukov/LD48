@@ -111,7 +111,7 @@ public class CodeMinigame : BaseMinigame
         {
             if (current_sequence == sequence)
             {
-                keypad_display.text = "Correct";
+                keypad_display.text = "Sending Data";
                 current_sequence = "";
                 FinishMinigame();
             }

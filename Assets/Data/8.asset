@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabName: Decrypt
   clip: {fileID: 8300000, guid: 18f19f0e2165a2746b2fa7cd07795a10, type: 3}
-  subtitle: "-od damn it, can you hear me? I can\u2019t crack the encryption, it\u2019s
+  subtitle: "God damn it, can you hear me? I can\u2019t crack the encryption, it\u2019s
     a stupid one-way with no keys, absolutely fucking moronic design. You need to
     decrypt the diagnostic data from your end so it can get access to the internals.
     There\u2019s a screen with a keypad on your left hand side. Above it is the encryption

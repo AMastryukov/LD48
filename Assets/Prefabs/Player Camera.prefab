@@ -334,8 +334,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3f3910c23b8435d4888405c4f97099f6, type: 2}
-  m_sharedMaterial: {fileID: -4009002913715232492, guid: 3f3910c23b8435d4888405c4f97099f6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a439b525db051bc44941706b8f13309c, type: 2}
+  m_sharedMaterial: {fileID: 1684039924387815462, guid: a439b525db051bc44941706b8f13309c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1351,7 +1351,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Programming & Misc Models
 
-    Johnnie Marman'
+    John Marman'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3f3910c23b8435d4888405c4f97099f6, type: 2}
   m_sharedMaterial: {fileID: -4009002913715232492, guid: 3f3910c23b8435d4888405c4f97099f6, type: 2}

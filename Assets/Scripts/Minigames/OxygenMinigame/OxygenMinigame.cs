@@ -11,6 +11,7 @@ public class OxygenMinigame : BaseMinigame
     [SerializeField] private OxygenValve[] valves;
     [SerializeField] private Image[] displayImages;
     [SerializeField] private Sprite[] directionSprites;
+    [SerializeField] private AudioSource oxygenLeakAudioSource;
 
     private OxygenValve.Orientation[] desiredOrientations;
     private List<int> randomOrder = new List<int> { 0, 1, 2 };
@@ -38,6 +39,7 @@ public class OxygenMinigame : BaseMinigame
 
     public override void FinishMinigame()
     {
+        oxygenLeakAudioSource.Stop();
         computerCanvas.enabled = false;
         base.FinishMinigame();
     }
@@ -67,10 +69,11 @@ public class OxygenMinigame : BaseMinigame
         // Generate random orientations for each valve
         for (int i = 0; i < desiredOrientations.Length; i++)
         {
-            while (desiredOrientations[i] == valves[i].currentOrientation)
+            do
             {
                 desiredOrientations[i] = (OxygenValve.Orientation)UnityEngine.Random.Range(0, Enum.GetNames(typeof(OxygenValve.Orientation)).Length);
             }
+            while (desiredOrientations[i] == valves[i].currentOrientation);
         }
 
         // Randomize the valve placements to add abstraction
@@ -83,5 +86,7 @@ public class OxygenMinigame : BaseMinigame
             displayImages[i].sprite = directionSprites[(int)desiredOrientations[randomIndex]];
             displayImages[i].color = colors[randomIndex];
         }
+
+        oxygenLeakAudioSource.Play();
     }
 }

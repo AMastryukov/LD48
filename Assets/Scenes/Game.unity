@@ -2878,8 +2878,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.19948971, y: 0.15196157, z: 0.15375987}
-  m_Center: {x: 0.025669012, y: -0.000000070780516, z: 0.07687993}
+  m_Size: {x: 0.19948994, y: 0.15196157, z: 0.16412264}
+  m_Center: {x: 0.025669122, y: -0.00000007455992, z: 0.071698695}
 --- !u!23 &528865328
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3572,10 +3572,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1569077108}
     m_Modifications:
-    - target: {fileID: 772668200523123261, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3420307213471325867, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -3623,10 +3619,6 @@ PrefabInstance:
     - target: {fileID: 7175813764692798265, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
       propertyPath: m_Name
       value: Oxygen Minigame
-      objectReference: {fileID: 0}
-    - target: {fileID: 8326595427761816472, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aee34f1e3a76a3f448592f404a6bc7e5, type: 3}
@@ -3994,8 +3986,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.00045449284, y: 0.0036537028, z: 0.00022184188}
-  m_Center: {x: 1.8460587e-11, y: 0.000018555522, z: 0.00011092066}
+  m_Size: {x: 0.0008410917, y: 0.0036537035, z: 0.00022184187}
+  m_Center: {x: -0.000009018033, y: 0.000018555524, z: 0.00011092067}
 --- !u!23 &734246148
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14647,8 +14639,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.19948971, y: 0.15196157, z: 0.15375987}
-  m_Center: {x: 0.025669012, y: -0.000000070780516, z: 0.07687993}
+  m_Size: {x: 0.19948971, y: 0.15196157, z: 0.16454211}
+  m_Center: {x: 0.025669018, y: -0.000000074498416, z: 0.071488805}
 --- !u!1 &4853425405042959551
 GameObject:
   m_ObjectHideFlags: 0
@@ -14847,7 +14839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4819168067634199325}
   m_LocalRotation: {x: 0.3756334, y: -0.59908247, z: -0.59908223, w: -0.37563324}
-  m_LocalPosition: {x: 1.6273468, y: 1.2534, z: -1.1431243}
+  m_LocalPosition: {x: 1.6273468, y: 1.2563, z: -1.1431243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 945146861}
