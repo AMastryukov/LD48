@@ -334,7 +334,7 @@ public class GameManager : MonoBehaviour
 
         DisableLights();
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(5f);
         #endregion
     }
 
