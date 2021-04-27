@@ -23,6 +23,7 @@ public class AudioManager : MonoBehaviour
         if (ambience >= shipAmbience.Length) { return; }
 
         shipAmbienceSource.Stop();
+        shipAmbienceSource.loop = true;
         shipAmbienceSource.clip = shipAmbience[ambience];
         shipAmbienceSource.Play();
     }
@@ -30,6 +31,7 @@ public class AudioManager : MonoBehaviour
     public void StopShipAmbience()
     {
         shipAmbienceSource.Stop();
+        shipAmbienceSource.loop = false;
     }
 
     public void PlayEndCredits()

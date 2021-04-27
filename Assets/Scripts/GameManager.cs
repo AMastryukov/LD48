@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private AudioManager audioManager;
     private PlayerCamera playerCamera;
     private VesselMovement vesselMovement;
+    private Credits credits;
 
     private SimonMinigame simonMinigame;
     private OxygenMinigame oxygenMinigame;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
         playerCamera = FindObjectOfType<PlayerCamera>();
         vesselMovement = FindObjectOfType<VesselMovement>();
+        credits = FindObjectOfType<Credits>();
 
         simonMinigame = FindObjectOfType<SimonMinigame>();
         oxygenMinigame = FindObjectOfType<OxygenMinigame>();
@@ -50,10 +52,10 @@ public class GameManager : MonoBehaviour
     {
         vesselMovement.SetSpeed(3f);
 
-        // yield return IntroSequence();
-        // yield return FirstSequence();
-        // yield return SecondSequence();
-        // yield return ThirdSequence();
+        yield return IntroSequence();
+        yield return FirstSequence();
+        yield return SecondSequence();
+        yield return ThirdSequence();
         yield return GameWinSequence();
 
         yield return null;
@@ -385,6 +387,8 @@ public class GameManager : MonoBehaviour
         audioManager.StopShipAmbience();
         audioManager.PlayEndCredits();
 
+        yield return new WaitForSeconds(2f);
+        credits.ShowCredits(audioManager.EndCreditsSongLength);
         yield return new WaitForSeconds(audioManager.EndCreditsSongLength);
 
         SceneManager.LoadScene("Main Menu");
