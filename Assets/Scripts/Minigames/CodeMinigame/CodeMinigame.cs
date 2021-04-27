@@ -70,7 +70,8 @@ public class CodeMinigame : BaseMinigame
         string update_text = "";
         for (int i = 1; i < mapping_size + 1; i++)
         {
-            update_text += i.ToString() + "=" + key_mapping[i.ToString()] + " ";
+            int p = 1 + (i - 1) * 2 % 9;
+            update_text += p.ToString() + "=" + key_mapping[p.ToString()] + " ";
 
             if (i % 3 == 0) { update_text += "\n"; }
         }
